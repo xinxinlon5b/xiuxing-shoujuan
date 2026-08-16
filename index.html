@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>修 行 手 卷 · 性命双修次第</title>
+<style>
+  :root{
+    --paper:#f6efe0;
+    --paper2:#efe5cd;
+    --ink:#2e2922;
+    --ink-soft:#5a5144;
+    --cinnabar:#a63d2f;
+    --cinnabar-dark:#8c3226;
+    --jade:#4e6b5c;
+    --gold:#b08d4f;
+    --line:#d9cbb0;
+    --line-soft:#e6dcc4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Kaiti SC","STKaiti","KaiTi","BiauKai","FangSong","STFangsong","Songti SC","STSong","SimSun",serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.9;
+    letter-spacing:.03em;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* 宣纸底纹 */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(ellipse 70% 45% at 85% 110%, rgba(176,141,79,.10), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 8% 90%, rgba(78,107,92,.08), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0 3px, rgba(120,100,70,.012) 3px 4px);
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px 140px;}
+
+  /* ===== 封面 ===== */
+  .cover{
+    min-height:96vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    position:relative;padding:80px 20px 60px;text-align:center;
+  }
+  .cover::before{
+    content:"";position:absolute;left:50%;top:8%;transform:translateX(-50%);
+    width:70%;height:70%;opacity:.5;pointer-events:none;
+    background:radial-gradient(ellipse at center, rgba(255,255,255,.6), transparent 70%);
+  }
+  .cover-title{
+    writing-mode:vertical-rl;font-size:clamp(44px,9vw,84px);font-weight:700;
+    letter-spacing:.35em;color:var(--ink);margin:0;line-height:1.2;
+    text-shadow:2px 3px 6px rgba(90,70,40,.12);
+    animation:fadeIn 1.6s ease both;
+  }
+  .cover-sub{
+    margin-top:38px;font-size:clamp(13px,2.6vw,17px);color:var(--ink-soft);letter-spacing:.5em;
+    animation:fadeIn 2s .3s ease both;
+  }
+  .cover-seal{
+    margin-top:52px;width:76px;height:76px;background:var(--cinnabar);color:#f6efe0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:30px;letter-spacing:.15em;writing-mode:vertical-rl;
+    border-radius:6px;box-shadow:0 6px 18px rgba(166,61,47,.35), inset 0 0 0 2px rgba(246,239,224,.35);
+    animation:fadeIn 2.2s .6s ease both, sealIn 2.2s .6s ease both;
+    transform-origin:center;
+  }
+  .cover-sig{
+    margin-top:16px;font-size:12px;color:var(--gold);letter-spacing:.4em;
+    animation:fadeIn 2.2s .9s ease both;
+  }
+  .cover-mtn{
+    position:absolute;bottom:0;left:0;right:0;width:100%;opacity:.9;pointer-events:none;
+    animation:fadeIn 2.4s .5s ease both;
+  }
+  .scroll-hint{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    color:var(--ink-soft);font-size:12px;letter-spacing:.4em;opacity:.7;
+    animation:hintFloat 2.6s ease-in-out infinite;
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes sealIn{0%{transform:rotate(-18deg) scale(.6);opacity:0}60%{opacity:1}100%{transform:rotate(0) scale(1)}}
+  @keyframes hintFloat{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-7px)}}
+
+  /* ===== 章节 ===== */
+  .chapter{margin-top:110px;}
+  .ch-head{display:flex;align-items:center;gap:18px;margin-bottom:34px;}
+  .ch-no{
+    flex:none;writing-mode:vertical-rl;font-size:15px;letter-spacing:.25em;color:#f6efe0;
+    background:var(--cinnabar);padding:10px 9px;border-radius:4px;box-shadow:0 4px 10px rgba(166,61,47,.28);
+  }
+  .ch-title{font-size:clamp(26px,4.5vw,34px);font-weight:700;letter-spacing:.12em;color:var(--ink);}
+  .ch-en{font-size:12px;color:var(--gold);letter-spacing:.3em;margin-top:4px;}
+  .ch-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);}
+  .ch-lead{color:var(--ink-soft);margin-bottom:26px;font-size:15.5px;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease;}
+  .reveal.on{opacity:1;transform:none;}
+
+  /* ===== 云纹分隔 ===== */
+  .divider{display:flex;align-items:center;gap:14px;margin:52px 0 8px;color:var(--line);}
+  .divider svg{flex:1;height:14px;}
+  .divider .sym{color:var(--cinnabar);font-size:16px;flex:none;}
+
+  /* ===== 方法卡 ===== */
+  .method{
+    background:linear-gradient(180deg, rgba(255,253,246,.72), rgba(248,241,225,.55));
+    border:1px solid var(--line-soft);border-radius:8px;
+    padding:30px 28px;margin:26px 0;position:relative;
+    box-shadow:0 3px 14px rgba(120,100,60,.06);
+  }
+  .method::before{
+    content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;
+    background:linear-gradient(180deg,var(--cinnabar),var(--gold));
+    border-radius:2px;opacity:.75;
+  }
+  .m-title{font-size:21px;font-weight:700;letter-spacing:.1em;color:var(--ink);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .m-title .m-tag{font-size:11px;color:#f6efe0;background:var(--jade);padding:2px 9px;border-radius:20px;letter-spacing:.18em;font-weight:400;}
+  .m-title .m-tag.red{background:var(--cinnabar);}
+  .m-title .m-tag.gold{background:var(--gold);}
+  .source{margin-top:8px;font-size:12.5px;color:var(--cinnabar-dark);letter-spacing:.1em;}
+  .source b{font-weight:700;}
+  .verse{
+    margin:18px 0 0;padding:18px 22px;border-left:2px solid var(--cinnabar);
+    background:rgba(166,61,47,.045);border-radius:0 6px 6px 0;
+    font-size:16.5px;line-height:2.1;color:var(--ink);
+  }
+  .verse .vt{display:block;font-size:12px;color:var(--gold);letter-spacing:.25em;margin-bottom:8px;}
+  .white{margin:14px 0 0;font-size:14.5px;color:var(--ink-soft);}
+  .white .wt{display:block;font-size:12px;color:var(--jade);letter-spacing:.25em;margin-bottom:4px;}
+  .sop{margin:18px 0 0;padding:0;list-style:none;counter-reset:step;}
+  .sop li{
+    position:relative;padding:9px 0 9px 44px;font-size:15px;color:var(--ink);
+    counter-increment:step;border-bottom:1px dashed var(--line-soft);
+  }
+  .sop li:last-child{border-bottom:none;}
+  .sop li::before{
+    content:counter(step);position:absolute;left:0;top:9px;
+    width:30px;height:30px;border:1px solid var(--cinnabar);color:var(--cinnabar);
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;background:rgba(255,253,246,.9);
+  }
+  .sop li b{color:var(--cinnabar-dark);}
+  .verify{
+    margin-top:16px;padding:14px 18px;border:1px dashed var(--jade);border-radius:6px;
+    background:rgba(78,107,92,.06);font-size:14px;color:var(--ink-soft);
+  }
+  .verify .vt{display:block;font-size:12px;color:var(--jade);letter-spacing:.25em;margin-bottom:6px;}
+  .verify span.ok{color:var(--jade);}
+  .note{
+    margin-top:16px;padding:13px 18px;border-radius:6px;font-size:13.5px;
+    background:rgba(176,141,79,.10);border-left:3px solid var(--gold);color:var(--ink-soft);
+  }
+  .note .nt{display:block;font-size:11.5px;color:var(--gold);letter-spacing:.3em;margin-bottom:4px;}
+
+  /* ===== 日课时间轴 ===== */
+  .daily{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px;}
+  @media(max-width:640px){.daily{grid-template-columns:1fr;}}
+  .daily-card{
+    background:linear-gradient(180deg, rgba(255,253,246,.8), rgba(248,241,225,.6));
+    border:1px solid var(--line-soft);border-radius:8px;padding:22px 20px;
+  }
+  .daily-card h4{font-size:17px;letter-spacing:.2em;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .daily-card h4 .sun{color:var(--gold);}
+  .daily-card h4 .moon{color:var(--jade);}
+  .daily-card ul{list-style:none;}
+  .daily-card li{padding:7px 0;border-bottom:1px dashed var(--line-soft);font-size:14.5px;color:var(--ink-soft);}
+  .daily-card li:last-child{border-bottom:none;}
+  .daily-card li b{color:var(--ink);}
+
+  /* ===== 红线 ===== */
+  .rules{counter-reset:rule;list-style:none;margin-top:6px;}
+  .rules li{
+    position:relative;padding:12px 0 12px 46px;font-size:15px;color:var(--ink-soft);
+    counter-increment:rule;border-bottom:1px dashed var(--line-soft);
+  }
+  .rules li::before{
+    content:counter(rule);position:absolute;left:0;top:12px;width:30px;height:30px;
+    background:var(--cinnabar);color:#f6efe0;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;
+  }
+  .rules li b{color:var(--cinnabar-dark);}
+
+  /* ===== 结语 ===== */
+  .end{text-align:center;margin-top:120px;padding-top:40px;border-top:1px solid var(--line);}
+  .end .big{writing-mode:vertical-rl;font-size:30px;letter-spacing:.4em;margin:0 auto;display:inline-block;color:var(--ink);}
+  .end p{margin-top:26px;font-size:14px;color:var(--ink-soft);}
+  .end .end-seal{
+    width:66px;height:66px;margin:44px auto 0;background:var(--cinnabar);color:#f6efe0;
+    display:flex;align-items:center;justify-content:center;font-size:26px;
+    writing-mode:vertical-rl;border-radius:6px;box-shadow:0 5px 14px rgba(166,61,47,.3);
+  }
+
+  /* ===== 回顶印章 ===== */
+  .backtop{
+    position:fixed;right:24px;bottom:28px;width:52px;height:52px;z-index:50;
+    background:var(--cinnabar);color:#f6efe0;border:none;border-radius:6px;cursor:pointer;
+    font-family:inherit;font-size:20px;letter-spacing:.1em;writing-mode:vertical-rl;
+    box-shadow:0 6px 16px rgba(166,61,47,.35);opacity:0;pointer-events:none;
+    transition:opacity .5s ease, transform .3s ease;
+  }
+  .backtop.show{opacity:1;pointer-events:auto;}
+  .backtop:hover{transform:translateY(-3px);}
+
+  /* ===== 声明 ===== */
+  .footnote{margin-top:70px;padding-top:18px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink-soft);opacity:.85;letter-spacing:.05em;}
+  .footnote p{margin:6px 0;}
+</style>
+</head>
+<body>
+
+<!-- 悬浮回顶 -->
+<button class="backtop" id="backtop" title="回顶">回顶</button>
+
+<div class="wrap">
+
+  <!-- ============ 封面 ============ -->
+  <section class="cover">
+    <h1 class="cover-title">性命双修<br>次第手卷</h1>
+    <div class="cover-sub">佛 为 性  ·  道 为 命  ·  禅 道 合 参</div>
+    <div class="cover-seal">道心</div>
+    <div class="cover-sig">丁卯年生 · 王昕 修学</div>
+    <svg class="cover-mtn" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,180 C120,150 180,90 260,70 C330,52 360,100 430,110 C500,120 520,60 600,45 C680,30 700,95 770,105 C840,115 870,55 950,60 C1030,65 1060,120 1200,110 L1200,220 L0,220 Z" fill="rgba(120,100,70,.14)"/>
+      <path d="M0,200 C150,180 260,140 380,150 C500,160 560,120 680,125 C800,130 900,170 1200,160 L1200,220 L0,220 Z" fill="rgba(120,100,70,.10)"/>
+      <circle cx="900" cy="48" r="16" fill="rgba(176,141,79,.35)"/>
+    </svg>
+    <div class="scroll-hint">下 卷</div>
+  </section>
+
+  <!-- ============ 卷首 · 命盘要旨 ============ -->
+  <section class="chapter reveal">
+    <div class="ch-head">
+      <div class="ch-no">卷首</div>
+      <div>
+        <div class="ch-title">命盘要旨</div>
+        <div class="ch-en">WHY THIS PATH SUITS YOU</div>
+      </div>
+      <div class="ch-line"></div>
+    </div>
+    <p class="ch-lead">此卷为君量身而设。八字丁卯 壬寅 戊戌 乙卯，紫微金四局，命宫天同化权，福德日月同宫、太阴化禄，财帛华盖，身宫天梁——<b>慧根福德俱足，天生与玄门佛道有缘</b>。然官杀重而身弱，陀罗坐身宫，故修行之要诀有二：<b>一曰松，二曰恒</b>。</p>
+    <div class="method reveal">
+      <div class="m-title">为你而设的三句话 <span class="m-tag gold">命理印证</span></div>
+      <div class="verse">
+        <span class="vt">《地藏菩萨本愿经》· 校量布施功德缘品</span>
+        「舍一得万报」　「布施因缘，其事如是」
+      </div>
+      <div class="white"><span class="wt">白话</span>你诵经发愿、忏悔改过，正是地藏法门"转定业"的正行——命是地图，不是判决。你已亲证气感、湖底、督脉上拔诸境，皆非幻觉，皆是心地风光，但勿执为究竟。</div>
+      <div class="note"><span class="nt">为你而设</span>木旺土虚 → 早起金刚功疏肝理气；官杀重 → 功课以"松"为诀，宁文勿武；陀罗 → 每日必做清单短而稳，断则次日补，不责己。</div>
+    </div>
+  </section>
+
+  <!-- ============ 卷一 · 总纲 ============ -->
+  <section class="chapter reveal">
+    <div class="ch-head">
+      <div class="ch-no">卷一</div>
+      <div>
+        <div class="ch-title">总纲 · 性命双修</div>
+        <div class="ch-en">THE PRINCIPLE</div>
+      </div>
+      <div class="ch-line"></div>
+    </div>
+    <div class="method reveal">
+      <div class="m-title">以佛为性 · 以道为命 <span class="m-tag">总纲</span></div>
+      <div class="verse">
+        <span class="vt">《黄帝内经·素问·上古天真论》</span>
+        「恬淡虚无，真气从之；精神内守，病安从来。」
+      </div>
+      <div class="verse">
+        <span class="vt">《道德经》第十六章</span>
+        「致虚极，守静笃。万物并作，吾以观复。」
+      </div>
+      <div class="white"><span class="wt">白话</span>佛为性功——明心见性，究竟了义；道为命功——色身转化，筑基延年。命功助道：色身好，方坐得住、修得久。然丹道到头仍须般若——吕祖遇黄龙禅师一喝而悟，方知"从前错用心"。故以佛为体、以道为用。</div>
+      <div class="note"><span class="nt">为何这样定</span>你福德宫日月同宫——阴阳双修之象；命宫天同化权——立愿方能定心；财帛华盖——玄学宗教天然亲近。禅道合参，正合君盘。</div>
+    </div>
+  </section>
+
+  <!-- ============ 卷二 · 日课 ============ -->
+  <section class="chapter reveal">
+    <div class="ch-head">
+      <div class="ch-no">卷二</div>
+      <div>
+        <div class="ch-title">日课 · 早晚功课</div>
+        <div class="ch-en">DAILY PRACTICE</div>
+      </div>
+      <div class="ch-line"></div>
+    </div>
+    <p class="ch-lead">每日必做清单<b>短而稳</b>——陀罗在身宫，最忌三天打鱼两天晒网。断则次日补，不责己。</p>
+
+    <div class="daily">
+      <div class="daily-card reveal">
+        <h4><span class="sun">☀</span> 早课 · 约45分钟</h4>
+        <ul>
+          <li><b>1. 八部金刚功</b> —— 15分钟（疏肝理气，木旺正需）</li>
+          <li><b>2. 静坐观息</b> —— 20-30分钟（安那般那 → 观心）</li>
+          <li><b>3. 常清静经</b> —— 1遍（收心摄意）</li>
+        </ul>
+      </div>
+      <div class="daily-card reveal">
+        <h4><span class="moon">☾</span> 晚课 · 约60-70分钟</h4>
+        <ul>
+          <li><b>1. 地藏经</b> —— 1部（愿力之根，雷打不动）</li>
+          <li><b>2. 地藏圣号</b> —— 1000声（金刚跪或盘坐）</li>
+          <li><b>3. 礼佛忏悔</b> —— 八十八佛 / 占察忏 交替</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">八部金刚功 <span class="m-tag red">动功</span><span class="m-tag">出处 · 张至顺道长传授</span></div>
+      <div class="source">出处：<b>《米晶子济世良方》附·八部金刚功</b>（张至顺道长 · 全真龙门派第二十一代）</div>
+      <div class="white"><span class="wt">白话</span>八部金刚功为全真龙门派千年传承的导引动功，晨起空腹练习，以调畅气机、抻筋拔骨，属"炼形"一法。动作务必参照张至顺道长原版视频逐式学习，切勿仅凭文字臆测。</div>
+      <div class="sop">
+        <li><b>预备</b>：面向东方（或佛台前），双脚与肩同宽，松静站立，舌抵上腭，呼吸自然。</li>
+        <li><b>第一式 双手插顶利三焦</b>：两手自体侧上举过头顶，掌心朝天，十指交叉翻掌上撑，仰头目视手背，随即分掌下落，如此反复。</li>
+        <li><b>第二式 手足前后固肾腰</b>：两臂向前平伸，掌心向下，随即弯腰，两手尽力下按至足前，然后起身后仰，两手上举过头，反复为之。</li>
+        <li><b>第三式 调理脾肤需单举</b>：左手翻掌上举、右手下按，两臂上下对拉，如撑天按地；再换右手上举、左手下按，左右交替。</li>
+        <li><b>第四式 左肝右肺如射雕</b>：两手如拉弓射雕之势，左右开弓，目视前方，配合吞吐。</li>
+        <li><b>第五式 回头望足去心疾</b>：身体缓缓转身，目随头转望后足跟，左右交替。</li>
+        <li><b>第六式 五劳七伤向后瞧</b>：头颈缓缓左右转动，向后瞧望，两臂随转微动。</li>
+        <li><b>第七式 凤凰展翅周身力</b>：两臂如凤凰展翅，上下起落开合，周身随之起伏。</li>
+        <li><b>第八式 两足顿顿饮嗜消</b>：两手叉腰，两足跟提起再顿地落下，反复顿足，以震动周身。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证</span>练后微汗而不喘；手足温热；晨起精神清爽。连续 90 天不断，即为筑基之一验。</div>
+      <div class="note"><span class="nt">为你而设</span>你八字木旺（肝木太过）克土，金刚功第四、五式专疏肝气；且晨起动功开阳，正合你"早起"习惯。注意膝盖旧伤——动作放缓，勿强求低式。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">安那般那 · 观息法 <span class="m-tag red">静坐</span><span class="m-tag">止观正路</span></div>
+      <div class="source">出处：<b>《杂阿含经》卷二十九 第803经</b> · <b>《佛说大安般守意经》</b></div>
+      <div class="verse">
+        <span class="vt">《杂阿含经》</span>
+        「出息长时，知息长；入息长时，知息长。出息短时，知息短；入息短时，知息短。」
+      </div>
+      <div class="verse">
+        <span class="vt">《佛说大安般守意经》</span>
+        「安名为入息，般名为出息。守意者，系意念道，不令散乱。」
+      </div>
+      <div class="white"><span class="wt">白话</span>安那般那即"数息观"——以呼吸为所缘，把心拴在气息上。息长知道息长，息短知道息短，只觉知、不控制、不评判。这是佛陀亲授的第一止观法门，也是你"睁眼观佛、呼吸由粗转细"体验的正规用法。</div>
+      <div class="sop">
+        <li><b>盘坐</b>：单盘、散盘、或跪坐（你已能金刚跪40分钟）皆可。脊背自然竖直，下颌微收，舌抵上腭，两手结定印（右手在上，两拇指相触）放于脐下。</li>
+        <li><b>调身</b>：先全身放松三遍——从头到脚，默念"松、松、松"，尤其放松肩、腰、面部（你官杀重，最容易紧的是肩颈）。</li>
+        <li><b>知息</b>：把注意力放在鼻孔处气息进出，或腹部起伏。只做一件事：<b>知道</b>。息入知入，息出知出，息长知长，息短知短。</li>
+        <li><b>数息（初学）</b>：若妄念纷飞，可默数——出息数一，再出息数二……数至十，再从一始。数错即从一重来。此为拴心之绳。</li>
+        <li><b>随息（进步）</b>：心已稍定，弃数而随——心随息走，不数不观，只是相随。</li>
+        <li><b>观息相（印证）</b>：坐久后呼吸自然变细、变长、乃至若有若无——此即"息相"，是止的进步，勿惊勿喜。你当年"呼吸由粗到细再到粗"，正是息相出入，正是用功处。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证（由浅入深）</span><span class="ok">①</span> 单次能坐 20 分钟不换腿；　<span class="ok">②</span> 能"看见"念头来去而不被带走；　<span class="ok">③</span> 呼吸自然变细变长（息相现前）；　<span class="ok">④</span> 日常遇事能"停一拍"再反应。</div>
+      <div class="note"><span class="nt">为你而设</span>你已亲历"湖底静谧""欲飘起"之境——那是轻安与身空，皆好境界，但记住：<b>来者不迎，去者不送</b>。境界是路标，不是家。隆波帕默《看见真相》之观心法，正是从"观息"转入"观心"的桥。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">常清静经 <span class="m-tag gold">日诵</span></div>
+      <div class="source">出处：<b>《太上老君说常清静经》</b>（道门日诵必持，约三百九十字）</div>
+      <div class="verse">
+        <span class="vt">原文要句</span>
+        「大道无形，生育天地；大道无情，运行日月；大道无名，长养万物；吾不知其名，强名曰道。」<br>
+        「夫人神好清，而心扰之；人心好静，而欲牵之。常能遣其欲，而心自静；澄其心，而神自清。」<br>
+        「人能常清静，天地悉皆归。」
+      </div>
+      <div class="white"><span class="wt">白话</span>道本无形无名，清静为体。神本好清，因心扰之；心本好静，因欲牵之。常常遣去欲望，心自然静；澄清内心，神自然清明。人能常清静，天地之气都来归附——此句即"性命双修"之总口诀，也是你晨起收心的钥匙。</div>
+      <div class="sop">
+        <li><b>诵法</b>：金刚坐或端坐，双手结印，一字一句缓缓诵之，字字分明，心随文走。</li>
+        <li><b>诵后</b>：闭目静默片刻，体会"清静"二字落在身上的感觉——气往下沉，心火下降。</li>
+        <li><b>日用</b>：心烦意乱时，默念"人能常清静，天地悉皆归"，三遍即安。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证</span>诵后心平气静；遇事易怒时，此句能一诵即缓，即算入门。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">地藏经 <span class="m-tag red">愿力之根</span></div>
+      <div class="source">出处：<b>《地藏菩萨本愿经》</b>（唐·实叉难陀译）</div>
+      <div class="verse">
+        <span class="vt">开经偈（唐·武则天）</span>
+        「无上甚深微妙法，百千万劫难遭遇。我今见闻得受持，愿解如来真实义。」
+      </div>
+      <div class="verse">
+        <span class="vt">地藏菩萨愿（通行赞语）</span>
+        「地狱未空，誓不成佛；众生度尽，方证菩提。」
+      </div>
+      <div class="white"><span class="wt">白话</span>地藏经是佛门"孝经"，也是"愿力"之经——地藏菩萨因地发愿度母、度一切众生，故你为姥姥、为老丈人诵经，正是与地藏愿力相应。你以此经为日课，如树扎根：愿力是修行路上最稳的锚。</div>
+      <div class="sop">
+        <li><b>净口净手</b>：诵前洗手、漱口，衣着整洁（可着海青，不拘）。</li>
+        <li><b>三称</b>：合掌称念"南无本师释迦牟尼佛"三称，再念开经偈。</li>
+        <li><b>诵经</b>：上中下三卷，一气呵成或分三次皆可；金刚跪、盘坐、端坐皆可；字字分明，不赶速度。</li>
+        <li><b>回向</b>：诵毕合掌回向：「愿以此功德，庄严佛净土。上报四重恩，下济三途苦。若有见闻者，悉发菩提心。尽此一报身，同生极乐国。」再特别回向你所愿之人（如姥姥、老丈人、历代祖先、冤亲债主）。</li>
+        <li><b>回向偈补</b>：可加「愿生西方净土中，九品莲花为父母。花开见佛悟无生，不退菩萨为伴侣。」</li>
+      </div>
+      <div class="verify"><span class="vt">验 证</span>诵时心能随文不散乱；诵后身心轻安；梦境安稳（地藏经有"转梦"之验，但勿求梦、勿执梦）。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">地藏圣号千声 <span class="m-tag red">念佛法门</span></div>
+      <div class="source">出处：<b>《楞严经》· 大势至菩萨念佛圆通章</b> · <b>《地藏菩萨本愿经》· 见闻利益品</b></div>
+      <div class="verse">
+        <span class="vt">《楞严经》</span>
+        「都摄六根，净念相继，得三摩地，斯为第一。」
+      </div>
+      <div class="verse">
+        <span class="vt">《地藏经》· 见闻利益品（大意）</span>
+        「闻地藏菩萨名，或合掌、赞叹、作礼、恋慕者，是人超越三十劫罪。」
+      </div>
+      <div class="white"><span class="wt">白话</span>念佛持名，重在"都摄六根"——眼不旁视、耳不旁听、口诵心念、意根专注，六根收摄一处，净念一个接一个，这便是最易入定的法门。你已发愿每日千声、连千日——此愿极好，当守之。</div>
+      <div class="sop">
+        <li><b>念法</b>：金刚跪或盘坐，合掌或掐念珠，念"南无地藏菩萨"（或"南无地藏王菩萨"），一字一珠。</li>
+        <li><b>千声约时</b>：默念约 15-20 分钟；出声念约 25-30 分钟。每日固定时段，形成惯性。</li>
+        <li><b>摄心要诀</b>：耳听自己念的声——口念、耳听、心记，三根收摄；妄念来了，看见，回来，再念。</li>
+        <li><b>回向</b>：千声毕，合掌回向（同地藏经回向偈）。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证</span>念时妄念渐少；念后心静身安；连续 1000 天不断，是愿力之验——此即你"成功在意料之外"那一卦中所言愿力的实践。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">礼佛忏悔 <span class="m-tag red">忏法</span><span class="m-tag">八十八佛 · 占察忏</span></div>
+      <div class="source">出处：<b>五十三佛《佛说观药王药上二菩萨经》</b> · <b>三十五佛《大宝积经·优波离会》</b> · <b>占察忏（明·藕益大师依《占察善恶业报经》制）</b></div>
+      <div class="verse">
+        <span class="vt">《占察善恶业报经》· 序分意（大意）</span>
+        「欲修忏悔法者，先当至心礼敬三宝，忏悔往昔罪业，发愿永不复造。」
+      </div>
+      <div class="white"><span class="wt">白话</span>忏悔是修行第一方便——不是自我否定，而是"承认、放下、改过"三步。你当年为消业烫香疤，发心可敬，但忏悔不在形式，在真心。八十八佛与占察忏皆是"以佛力加持自忏悔"的成熟法门。</div>
+      <div class="sop">
+        <li><b>八十八佛</b>：至诚合掌，逐尊称念"南无普光佛……"至八十八佛，每称一佛一拜（或三称一拜）。约 20-30 分钟。</li>
+        <li><b>占察忏</b>：依藕益大师《占察善恶业报经行法》：先礼赞，次忏悔文，再持地藏菩萨名，后诵经回向。约 40-60 分钟，可每周一次。</li>
+        <li><b>两法交替</b>：平日八十八佛为主，逢七或月末行占察忏。你已有《占察经》止观之愿——占察轮相法属"地藏占察"正行，待日课稳固后再研习，不急于一时。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证</span>拜后身暖汗出、心开意解；对过往人事逐渐"放下"而非"压住"；梦境转安。</div>
+      <div class="note"><span class="nt">为你而设</span>你 2009 年地藏七结缘、食素两年、供全堂佛——这些善根都在。当年烫疤之举，今不必再行：<b>忏悔心比形式重要</b>，如法忏悔，即是真消业。</div>
+    </div>
+  </section>
+
+  <!-- ============ 卷三 · 次第 ============ -->
+  <section class="chapter reveal">
+    <div class="ch-head">
+      <div class="ch-no">卷三</div>
+      <div>
+        <div class="ch-title">次第 · 五阶验证</div>
+        <div class="ch-en">THE FIVE STAGES</div>
+      </div>
+      <div class="ch-line"></div>
+    </div>
+    <p class="ch-lead">每一阶都有<b>可验证</b>的标尺——不搞玄虚，不以境界为凭，以身心实相为据。</p>
+
+    <div class="method reveal">
+      <div class="m-title">阶零 · 筑基收摄 <span class="m-tag gold">90天</span></div>
+      <div class="source">依据：<b>《道德经》第十章</b>「专气致柔，能如婴儿乎？」</div>
+      <div class="white"><span class="wt">白话</span>先求"不断"，不求"量大"。把日课固定成生物钟，让修行像吃饭睡觉一样自然。专气致柔——气要专、心要柔，此即筑基。</div>
+      <div class="sop">
+        <li><b>固定时辰</b>：早课 6:30 前开始；晚课 21:00 前开始；子时（23:00）前入睡。</li>
+        <li><b>功课落表</b>：按卷二日课执行，逐日打卡（卷末附打卡表）。</li>
+        <li><b>减负</b>：短视频、酒局、熬夜——筑基期先减三样，尤其睡前一小时不看手机。</li>
+        <li><b>食饮</b>：少荤多素、七分饱（你曾净口素两年，此不难）；忌过饱后打坐。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证</span>连续 90 天不断档；睡眠改善；静坐稳坐 30 分钟；气感更柔和（由"一股股上拔"转为"温煦绵长"）。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">阶一 · 止观入门 <span class="m-tag gold">3-6个月</span><span class="m-tag red">性功</span></div>
+      <div class="source">依据：<b>《六妙法门》（天台智者大师）</b>「一数、二随、三止、四观、五还、六净」· <b>《占察善恶业报经》止观章</b></div>
+      <div class="verse">
+        <span class="vt">《占察善恶业报经》· 止观大意</span>
+        「所言止者，谓止一切境界散乱；所言观者，谓观诸法自性皆空。」
+      </div>
+      <div class="white"><span class="wt">白话</span>止——把心停在一处，如锚入水；观——看念头起灭，不迎不拒。你已亲历"湖底静谧"（止的边缘）与"看见念头即出"（观的萌芽），正是从这里接续。隆波帕默《看见真相》的观心法与此同源：<b>知道正在发生的一切</b>。</div>
+      <div class="sop">
+        <li><b>前半座（约20分钟）观息</b>：按卷二安那般那法，数息→随息→息相。</li>
+        <li><b>后半座（约20分钟）观心</b>：放下呼吸，只是"看"——念头来了，知道"念头来了"；情绪起了，知道"情绪起了"；不追、不压、不解释。如路边看车来车往。</li>
+        <li><b>座下日用</b>：行走、吃饭、开车时，随机觉知身体动作、心中念头——把"觉知"带进生活。</li>
+        <li><b>每七日加长</b>：每周日加坐 10 分钟，渐至单座 60 分钟。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证</span>① 能看见妄念而不被带走（湖底可久住）；② 息相稳定现前；③ 情绪波动后回稳更快；④ 气感柔和、周身有暖意。</div>
+      <div class="note"><span class="nt">为你而设</span>你的"观佛、息相、欲飘"三验，已在止观门口。隆波帕默尊者法门是当世最稳妥的观心路，按《看见真相》一书次第修，不杂他法，三个月必见功。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">阶二 · 命功通督 <span class="m-tag gold">6-12个月</span><span class="m-tag red">命功</span></div>
+      <div class="source">依据：<b>李少波《真气运行法》五步功</b> · 总纲见 <b>《黄帝内经·素问》</b>「恬淡虚无，真气从之」</div>
+      <div class="verse">
+        <span class="vt">《真气运行法》五步功诀（李少波）</span>
+        一步「呼气注意心窝部」　二步「意息相随丹田趋」　三步「调息凝神守丹田」<br>
+        四步「通督勿忘复勿助」　五步「元神蓄力育生机」
+      </div>
+      <div class="white"><span class="wt">白话</span>真气运行法是近代最系统、最安全的周天功法。你已亲历"脊柱由下而上、一股一股上拔"——那正是第四步"通督勿忘复勿助"的气冲反应。但切莫跳步：从第一步重新走稳，如盖楼打地基。</div>
+      <div class="sop">
+        <li><b>第一步 呼气注意心窝部（约1-2周）</b>：垂腿坐，闭目，舌抵上腭。呼气时意念注意心窝（膻中穴区域），吸气时不管。每日早中晚各 20 分钟。验：心窝温热或沉重。</li>
+        <li><b>第二步 意息相随丹田趋（约1-2周）</b>：心窝有温热感后，呼气时意念随气息下沉趋向丹田（脐下三寸）。验：丹田温热、肠鸣矢气。</li>
+        <li><b>第三步 调息凝神守丹田（约1-3月）</b>：守丹田，呼吸自然，似守非守，文火温养。验：丹田气足、会阴或尾闾气动。</li>
+        <li><b>第四步 通督勿忘复勿助（约1-3月）</b>：气至尾闾、夹脊、玉枕，意念随气而行——"勿忘"是别丢，&quot;勿助&quot;是别催。验：玉枕气过、头面清凉、口中甘津（金津玉液），任督小循环。</li>
+        <li><b>第五步 元神蓄力育生机（长期）</b>：有欲观窍、无欲观妙，守定养胎。验：气感遍布、全身融融、精神饱满。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证（每步有验，方进下一步）</span><span class="ok">心窝热</span>→<span class="ok">丹田热</span>→<span class="ok">尾闾动</span>→<span class="ok">夹脊过</span>→<span class="ok">玉枕通</span>→<span class="ok">口中甘津、任督循环</span></div>
+      <div class="note"><span class="nt">为你而设（重点）</span>你已有"一股股往上拔"的壮火倾向——记住四字诀"<b>勿忘勿助</b>"：气来则知，气不来不催。宁文勿武，宁慢勿快。若头部胀痛、胸闷、气乱窜，立即停功、放松、念圣号，次日再续。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">阶三 · 丹道筑基 <span class="m-tag gold">1-3年</span><span class="m-tag red">命功</span></div>
+      <div class="source">依据：<b>《钟吕传道集》</b> · <b>《灵宝毕法》</b> · <b>张伯端《悟真篇》</b></div>
+      <div class="verse">
+        <span class="vt">《悟真篇》· 绝句</span>
+        「道自虚无生一气，便从一气产阴阳。阴阳再合生三体，三体重生万物昌。」
+      </div>
+      <div class="verse">
+        <span class="vt">《悟真篇》· 绝句</span>
+        「一粒灵丹吞入腹，始知我命不由天。」
+      </div>
+      <div class="white"><span class="wt">白话</span>丹道筑基，要旨三事：<b>固精、养气、凝神</b>。百日筑基——百日内房事节制（固精不漏）、子时前入睡、饮食清淡、静坐日增。精满气足，任督自然河车运转，非用意强运。</div>
+      <div class="sop">
+        <li><b>百日筑基</b>：三戒（戒熬夜、戒酒、戒纵欲）；静坐增至 1 小时；配合早课动功。</li>
+        <li><b>凝神</b>：静坐守丹田，似守非守，文火温养——此即"凝神入气穴"。</li>
+        <li><b>河车</b>：气满后任督自动运转，勿以意领气。</li>
+        <li><b>印证经典</b>：读《悟真篇》《金丹四百字》以明理，不明理不动功。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证</span>精力回春（晨勃恢复、精神饱满）；气满自转（任督自动循行）；头目清明；睡眠变短而深。</div>
+      <div class="note"><span class="nt">为你而设（重要）</span>通督之后、丹道筑基起，<b>务必寻明师指点</b>——网络短视频碎片最易出偏。你听丹道短视频多年，如今已有实证基础，正是"访师"之时：可先参加正统丹道/真气运行法面授班（如李少波真气运行法官方培训），把功夫落在明师眼下。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">阶四 · 炼气化神 <span class="m-tag gold">3-10年</span></div>
+      <div class="source">依据：<b>《金丹四百字》（张伯端）</b></div>
+      <div class="verse">
+        <span class="vt">《金丹四百字》</span>
+        「真土擒真铅，真铅制真汞。铅汞归真土，身心寂不动。」
+      </div>
+      <div class="white"><span class="wt">白话</span>真土是意，真铅是气，真汞是神——以意调气、以气养神，神气合一，身心寂然不动。此阶段气遍周身、胎息渐成，为"大周天"之事。此时当与止观合流：观心与炼神合一，性命双融。</div>
+      <div class="sop">
+        <li><b>大周天</b>：十二经络通达，气行周身，非只任督。</li>
+        <li><b>胎息</b>：呼吸几无，如婴儿在胎——此是水到渠成，不可强求。</li>
+        <li><b>性命双融</b>：每日静坐前半炼气、后半观心，二法一炉。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证</span>全身气感一体；呼吸绵长近无；身轻体健、寒暑不侵之渐；心地愈明。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">阶五 · 明心见性 <span class="m-tag gold">终生</span><span class="m-tag red">性功·究竟</span></div>
+      <div class="source">依据：<b>《六祖坛经》</b> · <b>《般若波罗蜜多心经》</b> · <b>《金刚般若波罗蜜经》</b> · 憨山大师《观心铭》</div>
+      <div class="verse">
+        <span class="vt">《六祖坛经》</span>
+        「菩提本无树，明镜亦非台。本来无一物，何处惹尘埃。」
+      </div>
+      <div class="verse">
+        <span class="vt">《金刚经》</span>
+        「凡所有相，皆是虚妄。若见诸相非相，即见如来。」　「应无所住而生其心。」
+      </div>
+      <div class="verse">
+        <span class="vt">《心经》</span>
+        「观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄。」
+      </div>
+      <div class="white"><span class="wt">白话</span>明心见性——亲见本来面目，非思量所得，非言语可道。丹道到头，仍须般若：色身可炼，法身须悟。此阶段以观心、参究为主，丹道为助；亲近善知识，不废日用。</div>
+      <div class="sop">
+        <li><b>参究</b>：日用中常提"念佛是谁""拖死尸的是谁"（参话头），或常观"应无所住而生其心"。</li>
+        <li><b>观心铭</b>：诵憨山大师《观心铭》，依文起观。</li>
+        <li><b>护持</b>：不废前四阶功夫——戒定是慧之基，命功是色身之依。</li>
+      </div>
+      <div class="verify"><span class="vt">验 证</span>烦恼脱落、言语道断；对境不生贪嗔；亲见本来面目——此是"找回本源"的终点，不假外求。</div>
+    </div>
+  </section>
+
+  <!-- ============ 卷四 · 护持 ============ -->
+  <section class="chapter reveal">
+    <div class="ch-head">
+      <div class="ch-no">卷四</div>
+      <div>
+        <div class="ch-title">护持 · 日用发愿</div>
+        <div class="ch-en">DAILY SUPPORT</div>
+      </div>
+      <div class="ch-line"></div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">大医精诚 <span class="m-tag gold">发愿文</span></div>
+      <div class="source">出处：<b>孙思邈《备急千金要方》卷一</b></div>
+      <div class="verse">
+        <span class="vt">原文</span>
+        「凡大医治病，必当安神定志，无欲无求，先发大慈恻隐之心，誓愿普救含灵之苦。若有疾厄来求救者，不得问其贵贱贫富，长幼妍媸，怨亲善友，华夷愚智，普同一等，皆如至亲之想。」
+      </div>
+      <div class="white"><span class="wt">白话</span>此段虽言医道，实是发菩提心之文：治病先安神定志、无欲无求，对一切人平等如至亲。你每日诵之，是把"慈悲"化为日用——修行不在座上，在座下待人接物。</div>
+    </div>
+
+    <div class="method reveal">
+      <div class="m-title">日用修行三句 <span class="m-tag gold">座下功夫</span></div>
+      <div class="verse">
+        <span class="vt">《道德经》第四十八章</span>
+        「为学日益，为道日损。损之又损，以至于无为。」
+      </div>
+      <div class="white"><span class="wt">白话</span>做学问天天增加，修道天天减损——减损的是欲望、习气、执着。你官杀重、责任感强，最易"用力过猛"：日用中多问一句"这是必要，还是习气？"</div>
+      <div class="sop">
+        <li><b>口业</b>：巨门化忌——慎言、少争辩、不背后议人；每日观己言语三过。</li>
+        <li><b>身业</b>：久坐工作，每小时起身活动；金刚跪诵经护膝。</li>
+        <li><b>意业</b>：遇烦恼事，先念"清静经"三句，再处理；把"修行落在生活里"，不躲进打坐。</li>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 卷五 · 红线 ============ -->
+  <section class="chapter reveal">
+    <div class="ch-head">
+      <div class="ch-no">卷五</div>
+      <div>
+        <div class="ch-title">红线 · 八条戒律</div>
+        <div class="ch-en">SAFETY RULES</div>
+      </div>
+      <div class="ch-line"></div>
+    </div>
+    <ol class="rules">
+      <li><b>丹道求明师</b>：通督以后（阶三起），不可只靠网络自学；短视频碎片仅供了解，不供实修。</li>
+      <li><b>出偏先兆</b>：头部持续胀痛、胸闷、气乱窜、幻视幻听、失眠——立即停功、放松、念圣号，严重者就医。</li>
+      <li><b>火候宁文勿武</b>：你已有"壮火"倾向（气一股股上拔）——牢记"勿忘勿助"，松字诀。</li>
+      <li><b>房事节制</b>：丹道筑基期（阶二三）尤为要紧，固精是命功底线。</li>
+      <li><b>觉受不执着</b>：漂浮、气动、光感、湖底——皆是风景，追求即着魔。你不求神通，此心极好，保持。</li>
+      <li><b>修行不逃避</b>：夫妻宫天刑、官禄巨门忌——把修行落在家庭、事业、口业里，不借修行之名躲开责任。</li>
+      <li><b>身体有病先就医</b>：丹道命功不能替代医疗；久坐、跪拜注意膝腰养护。</li>
+      <li><b>戒疤不必再烫</b>：当年发心可敬，但形式不如法；忏悔心比形式重要——如法忏悔，即是真消业。</li>
+    </ol>
+  </section>
+
+  <!-- ============ 卷末 · 打卡 ============ -->
+  <section class="chapter reveal">
+    <div class="ch-head">
+      <div class="ch-no">卷末</div>
+      <div>
+        <div class="ch-title">打卡 · 百日功过格</div>
+        <div class="ch-en">DAILY CHECKLIST</div>
+      </div>
+      <div class="ch-line"></div>
+    </div>
+    <div class="method reveal">
+      <div class="m-title">每日功过格 <span class="m-tag gold">仿袁了凡功过格</span></div>
+      <div class="source">出处：<b>《了凡四训》· 功过格</b>（明·袁了凡）</div>
+      <div class="white"><span class="wt">白话</span>袁了凡以功过格自省改命——日行一善记功，日有过失记过。你也可将每日功课记为"功"，妄语嗔怒记为"过"，月底一结，见己之进。</div>
+      <div class="sop">
+        <li><b>每日晨起</b>：默念今日三件事（功课 + 一件利他之事）。</li>
+        <li><b>每日睡前</b>：过一遍功课清单，未做的次日补，不责己、不中断。</li>
+        <li><b>每周日晚</b>：回看一周，记"功过"各一条，结语一句（如"本周松了三分"）。</li>
+      </div>
+      <div class="verify"><span class="vt">打卡表（复制到笔记软件使用）</span><br>
+        <span class="ok">| 日期 | 金刚功 | 静坐 | 清静经 | 地藏经 | 圣号1000 | 礼佛 | 静坐感受 | 气感/梦境 | 备注 |</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 结语 ============ -->
+  <section class="end reveal">
+    <div class="big">恒 者 自 证</div>
+    <p>命盘是地图，愿力是舟，功课是桨。<br>此卷为君而作——不求神通，只找回本源。<br>三年后再开此卷，当见己之进。</p>
+    <div class="end-seal">道心</div>
+  </section>
+
+  <div class="footnote">
+    <p>※ 本卷经文出处均引自通行经典版本；白话为编者依义述译，非逐字对译。八部金刚功招式名以张至顺道长传授版为准，动作请参照原版视频学习。</p>
+    <p>※ 命理部分据 1987年2月18日 卯时 排盘（八字：丁卯 壬寅 戊戌 乙卯；紫微：金四局），仅供修学参考，不构成医疗建议。</p>
+    <p>※ 更新时间：2026-08-16　|　为王昕 修学而作</p>
+  </div>
+
+</div>
+
+<script>
+  // 滚动渐显
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // 回顶
+  const bt = document.getElementById('backtop');
+  window.addEventListener('scroll',()=>{
+    bt.classList.toggle('show', window.scrollY > 600);
+  });
+  bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
