@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>命 理 合 参 手 卷 · 王昕</title>
+<style>
+  :root{
+    --paper:#f6efe0;--paper2:#efe5cd;--ink:#2e2922;--ink-soft:#5a5144;
+    --cinnabar:#a63d2f;--cinnabar-dark:#8c3226;--jade:#4e6b5c;--gold:#b08d4f;
+    --line:#d9cbb0;--line-soft:#e6dcc4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Kaiti SC","STKaiti","KaiTi","BiauKai","FangSong","STFangsong","Songti SC","STSong","SimSun",serif;
+    background:var(--paper);color:var(--ink);line-height:2;letter-spacing:.03em;-webkit-font-smoothing:antialiased;
+  }
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(ellipse 70% 45% at 85% 110%, rgba(176,141,79,.10), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 8% 90%, rgba(78,107,92,.08), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0 3px, rgba(120,100,70,.012) 3px 4px);}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px 140px;}
+
+  /* ===== 顶部导航 ===== */
+  .topnav{position:sticky;top:0;z-index:200;background:rgba(246,239,224,.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);box-shadow:0 2px 12px rgba(120,100,60,.10);}
+  .topnav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:8px 14px;flex-wrap:wrap;}
+  .nav-brand{font-size:15px;font-weight:700;letter-spacing:.15em;color:var(--cinnabar-dark);margin-right:14px;white-space:nowrap;}
+  .nav-brand span{color:var(--gold);}
+  .nav-toggle{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);
+    font-family:inherit;font-size:14px;padding:6px 12px;border-radius:5px;cursor:pointer;}
+  .nav-item{position:relative;}
+  .nav-link{display:block;padding:8px 12px;font-size:13.5px;color:var(--ink);text-decoration:none;
+    letter-spacing:.08em;border-radius:5px;transition:all .3s;white-space:nowrap;}
+  .nav-link:hover{background:rgba(166,61,47,.10);color:var(--cinnabar-dark);}
+  .nav-link.has-sub::after{content:"▾";margin-left:5px;font-size:10px;color:var(--cinnabar);}
+  .nav-item:hover .nav-sub{display:block;}
+  .nav-sub{display:none;position:absolute;top:100%;left:0;min-width:200px;z-index:300;
+    background:rgba(250,245,233,.98);border:1px solid var(--line);border-radius:6px;
+    box-shadow:0 8px 22px rgba(90,70,40,.14);padding:6px;margin-top:2px;}
+  .nav-sub a{display:block;padding:9px 14px;font-size:13px;color:var(--ink-soft);text-decoration:none;
+    border-radius:4px;transition:all .2s;border-bottom:1px dashed var(--line-soft);}
+  .nav-sub a:last-child{border-bottom:none;}
+  .nav-sub a:hover{background:rgba(166,61,47,.08);color:var(--cinnabar-dark);}
+  @media(max-width:720px){
+    .nav-toggle{display:block;}
+    .nav-items{display:none;width:100%;flex-direction:column;padding:6px 0;}
+    .nav-items.open{display:flex;}
+    .nav-item{width:100%;}
+    .nav-sub{position:static;display:none;box-shadow:none;border:none;padding-left:18px;min-width:0;}
+    .nav-item.open .nav-sub{display:block;}
+    .nav-link.has-sub::after{content:"▸";}
+    .nav-item.open .nav-link.has-sub::after{content:"▾";}
+  }
+
+  /* ===== 封面 ===== */
+  .cover{min-height:94vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    position:relative;padding:80px 20px 60px;text-align:center;}
+  .cover::before{content:"";position:absolute;left:50%;top:8%;transform:translateX(-50%);
+    width:70%;height:70%;opacity:.5;pointer-events:none;
+    background:radial-gradient(ellipse at center, rgba(255,255,255,.6), transparent 70%);}
+  .cover-title{writing-mode:vertical-rl;font-size:clamp(44px,9vw,80px);font-weight:700;
+    letter-spacing:.35em;color:var(--ink);margin:0;line-height:1.2;text-shadow:2px 3px 6px rgba(90,70,40,.12);
+    animation:fadeIn 1.6s ease both;}
+  .cover-sub{margin-top:38px;font-size:clamp(13px,2.6vw,17px);color:var(--ink-soft);letter-spacing:.5em;
+    animation:fadeIn 2s .3s ease both;}
+  .cover-seal{margin-top:36px;width:58px;height:58px;border:2px solid var(--cinnabar);color:var(--cinnabar);
+    display:flex;align-items:center;justify-content:center;font-size:15px;letter-spacing:.2em;transform:rotate(-4deg);
+    border-radius:6px;animation:fadeIn 2.2s .5s ease both;}
+  .cover-sig{margin-top:22px;font-size:12px;color:var(--ink-soft);letter-spacing:.3em;animation:fadeIn 2.2s .6s ease both;}
+  .cover-mtn{position:absolute;bottom:0;left:0;width:100%;height:200px;opacity:.55;animation:fadeIn 2.5s .8s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ===== 章节 ===== */
+  .chapter{background:linear-gradient(180deg, rgba(255,253,246,.72), rgba(248,241,225,.5));
+    border:1px solid var(--line-soft);border-radius:10px;padding:34px 28px 30px;margin:34px 0;
+    box-shadow:0 4px 18px rgba(120,100,60,.06);}
+  .ch-head{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+  .ch-no{flex:none;font-size:13px;color:var(--cinnabar);border:1px solid var(--cinnabar);border-radius:4px;
+    padding:4px 9px;letter-spacing:.2em;}
+  .ch-title{font-size:22px;font-weight:700;letter-spacing:.1em;color:var(--ink);}
+  .ch-en{font-size:10.5px;color:var(--gold);letter-spacing:.28em;margin-top:3px;}
+  .ch-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);}
+
+  /* ===== 方法卡 ===== */
+  .method{background:rgba(255,253,246,.55);border:1px solid var(--line-soft);border-radius:8px;
+    padding:22px 20px;margin:18px 0;transition:box-shadow .3s;}
+  .m-title{font-size:16.5px;font-weight:700;letter-spacing:.08em;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .m-tag{font-size:11px;color:#f6efe0;background:var(--jade);padding:2px 9px;border-radius:20px;letter-spacing:.15em;font-weight:400;}
+  .m-tag.red{background:var(--cinnabar);}
+  .m-tag.gold{background:var(--gold);}
+  .source{margin-top:6px;font-size:12.5px;color:var(--cinnabar-dark);letter-spacing:.06em;}
+  .lead{font-size:14.5px;color:var(--ink-soft);margin-bottom:8px;}
+  .kf{font-size:14.5px;color:var(--ink);margin:8px 0;padding-left:14px;border-left:2px solid var(--gold);}
+  .kf b{color:var(--cinnabar-dark);}
+  .white{font-size:14.5px;color:var(--ink);margin:8px 0;padding:10px 14px;background:rgba(176,141,79,.08);
+    border-radius:6px;border-left:3px solid var(--gold);}
+  .note{margin-top:12px;padding:10px 14px;border-radius:6px;font-size:13px;background:rgba(166,61,47,.06);
+    border-left:3px solid var(--cinnabar);color:var(--ink-soft);}
+  .note .nt{display:block;font-size:11px;color:var(--cinnabar);letter-spacing:.28em;margin-bottom:3px;font-weight:700;}
+  .verify{margin-top:12px;padding:12px 16px;border-radius:6px;font-size:14px;background:rgba(78,107,92,.08);
+    border-left:3px solid var(--jade);color:var(--ink);}
+  .verify .vt{display:block;font-size:11px;color:var(--jade);letter-spacing:.28em;margin-bottom:3px;font-weight:700;}
+  .sop{list-style:none;padding:0;margin:8px 0;}
+  .sop li{font-size:14.5px;color:var(--ink);margin:8px 0;padding-left:18px;position:relative;line-height:1.95;}
+  .sop li::before{content:"◆";position:absolute;left:0;top:2px;font-size:10px;color:var(--cinnabar);}
+  .sop li b{color:var(--cinnabar-dark);}
+  table.mini{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:8px 10px;text-align:left;}
+  table.mini th{background:rgba(176,141,79,.12);color:var(--ink);font-weight:700;letter-spacing:.05em;}
+  table.mini tr:nth-child(even){background:rgba(255,253,246,.5);}
+
+  .footnote{margin-top:60px;padding-top:18px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink-soft);opacity:.85;letter-spacing:.04em;}
+  .footnote p{margin:5px 0;}
+  .backtop{position:fixed;right:20px;bottom:24px;width:46px;height:46px;z-index:50;
+    background:var(--cinnabar);color:#f6efe0;border:none;border-radius:6px;cursor:pointer;
+    font-family:inherit;font-size:15px;box-shadow:0 6px 16px rgba(166,61,47,.35);
+    opacity:0;pointer-events:none;transition:opacity .4s;}
+  .backtop.show{opacity:1;pointer-events:auto;}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="nav-brand">命理<span>合参</span></div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="菜单">☰ 目录</button>
+    <div class="nav-items" id="nav-items">
+      <div class="nav-item"><a class="nav-link" href="#cover">卷首</a></div>
+      <div class="nav-item"><a class="nav-link has-sub" href="#ch-mingpan">命盘</a>
+        <div class="nav-sub">
+          <a href="#m-bazi">八字四柱</a>
+          <a href="#m-ziwei">紫微斗数</a>
+          <a href="#m-liuyao">六爻占</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link has-sub" href="#ch-shive">事业</a>
+        <div class="nav-sub">
+          <a href="#m-guanlu">职业主线</a>
+          <a href="#m-shouru">收入结构</a>
+          <a href="#m-caifu">散财与聚财</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link has-sub" href="#ch-lingxing">灵性</a>
+        <div class="nav-sub">
+          <a href="#m-juewu">觉悟之问</a>
+          <a href="#m-xiuxing">修行路线</a>
+          <a href="#m-lingcheng">灵性成就</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link has-sub" href="#ch-fangwei">方位</a>
+        <div class="nav-sub">
+          <a href="#m-yunnan">云南之约</a>
+          <a href="#m-nianfen">哪一年去</a>
+          <a href="#m-shengtai">身体调理</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="#ch-zongjie">总断</a></div>
+    </div>
+  </div>
+</nav>
+
+<button class="backtop" id="backtop" title="回顶">回顶</button>
+
+<div class="wrap">
+
+  <!-- ============ 封面 ============ -->
+  <section class="cover" id="cover">
+    <h1 class="cover-title">命理合参<br>手卷</h1>
+    <div class="cover-sub">八 字  ·  紫 微  ·  六 爻 三 盘 合 参</div>
+    <div class="cover-seal">合参</div>
+    <div class="cover-sig">丁卯年生 · 王昕 · 2026 丙午年辑</div>
+    <svg class="cover-mtn" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,180 C120,150 180,90 260,70 C330,52 360,100 430,110 C500,120 520,60 600,45 C680,30 700,95 770,105 C840,115 870,55 950,60 C1030,65 1060,120 1200,110 L1200,220 L0,220 Z" fill="rgba(120,100,70,.14)"/>
+      <path d="M0,200 C150,180 260,140 380,150 C500,160 560,120 680,125 C800,130 900,170 1200,160 L1200,220 L0,220 Z" fill="rgba(120,100,70,.10)"/>
+    </svg>
+  </section>
+
+  <!-- ============ 卷一 · 命盘 ============ -->
+  <section class="chapter" id="ch-mingpan">
+    <div class="ch-head">
+      <div class="ch-no">卷一</div>
+      <div><div class="ch-title">命盘总览</div><div class="ch-en">THREE SYSTEMS · ONE PERSON</div></div>
+      <div class="ch-line"></div>
+    </div>
+
+    <div class="method" id="m-bazi">
+      <div class="m-title">八字四柱 <span class="m-tag">立春换年·已核实</span></div>
+      <div class="source">公历 1987-02-18 卯时 · 农历正月廿一 · 生肖兔 · 内蒙古额尔古纳</div>
+      <table class="mini">
+        <tr><th>柱</th><th>年</th><th>月</th><th>日</th><th>时</th></tr>
+        <tr><td><b>干支</b></td><td>丁卯</td><td>壬寅</td><td><b>戊戌</b></td><td>乙卯</td></tr>
+        <tr><td>十神</td><td>正印</td><td>偏财</td><td>日主</td><td>正官</td></tr>
+        <tr><td>藏干</td><td>乙(官)</td><td>甲丙戊(杀印比)</td><td>戊辛丁(比伤印)</td><td>乙(官)</td></tr>
+      </table>
+      <div class="kf"><b>格局：杀印相生。</b>官杀重重（卯寅卯+乙）压身，年干丁火正印化杀生身——压力经学问、信仰转化为力量。你是"越用学问化解压力，越强大"的命。</div>
+      <div class="kf"><b>日主戊土身弱</b>，生于寅月（初春木旺土虚），用神<b>火、土</b>——火为印（学问、信仰、智慧），土为比劫（帮身）。</div>
+      <div class="kf"><b>五行</b>：木极旺（官杀重）、火有根（印透）、土有根（日主）、金极弱、水弱。</div>
+      <div class="kf"><b>大运</b>：戊戌(35-44)→<b>丁酉(45-54)</b>→丙申(55-64)→乙未(65-74)。丁酉运伤官配印，人生高光。</div>
+    </div>
+
+    <div class="method" id="m-ziwei">
+      <div class="m-title">紫微斗数 <span class="m-tag red">金四局</span></div>
+      <div class="source">命宫辛亥·天同化权 · 迁移宫=身宫·天梁 · 福德宫癸丑·日月化禄 · 财帛宫·华盖</div>
+      <table class="mini">
+        <tr><th>宫位</th><th>主星</th><th>人生含义</th></tr>
+        <tr><td>命宫</td><td>天同化权</td><td>福星掌权，能把福气转为自主力量</td></tr>
+        <tr><td>身宫(迁移)</td><td>天梁</td><td>荫星·医星·宗教星——一生与医、教、渡人缘分深</td></tr>
+        <tr><td>福德宫</td><td>太阳太阴化禄</td><td>日月同辉——内心光明、慈悲、有智慧，福报厚</td></tr>
+        <tr><td>财帛宫</td><td>华盖</td><td>五术(山医命相卜)天赋——能靠灵性/医道吃饭</td></tr>
+        <tr><td>官禄宫</td><td>天机化科·巨门</td><td>策划、表达、逻辑——口与脑的专业之路</td></tr>
+        <tr><td>疾厄宫</td><td>七杀·禄存</td><td>底子硬、耐受力强；禄存=稳定之财</td></tr>
+      </table>
+      <div class="kf"><b>44-53岁财帛宫大限</b>（文昌文曲华盖）——五术开花结果之期，灵性/文化/医道立身。</div>
+    </div>
+
+    <div class="method" id="m-liuyao">
+      <div class="m-title">六爻占 <span class="m-tag gold">整体运程</span></div>
+      <div class="source">起于 2026-08-16 壬戌日 · 模拟铜钱摇卦 · 本卦水山蹇 → 变卦地山谦</div>
+      <table class="mini">
+        <tr><th>爻</th><th>干支</th><th>五行</th><th>六亲</th><th>六神</th><th>世应</th></tr>
+        <tr><td>六</td><td>丁未</td><td>土</td><td>父母</td><td>白虎</td><td></td></tr>
+        <tr><td>五</td><td>丁酉</td><td>金</td><td><b>兄弟●动</b></td><td>螣蛇</td><td></td></tr>
+        <tr><td>四</td><td>丁亥</td><td>水</td><td><b>子孙</b></td><td>勾陈</td><td><b>世</b></td></tr>
+        <tr><td>三</td><td>丁丑</td><td>土</td><td>父母</td><td>朱雀</td><td></td></tr>
+        <tr><td>二</td><td>丁卯</td><td>木</td><td>妻财</td><td>青龙</td><td></td></tr>
+        <tr><td>初</td><td>丁巳</td><td>火</td><td>官鬼</td><td>玄武</td><td><b>应</b></td></tr>
+      </table>
+      <div class="kf"><b>卦辞</b>：「蹇，利西南，不利东北；利见大人，贞吉。」《彖》：「见险而能止，知矣哉！」</div>
+      <div class="kf"><b>变卦地山谦</b>——六十四卦唯一六爻皆吉之卦：「天道亏盈而益谦，地道变盈而流谦，鬼神害盈而福谦。」</div>
+      <div class="kf"><b>世爻子孙亥水</b>：福德、自在、医药——你本性求自在不求功名。子孙持世为占整体运程最吉之象。</div>
+      <div class="kf"><b>应爻官鬼巳火</b>：被世爻亥水冲克——硬拼功名非你之路；亥巳冲=内心与外境常拉扯。</div>
+    </div>
+  </section>
+
+  <!-- ============ 卷二 · 事业 ============ -->
+  <section class="chapter" id="ch-shive">
+    <div class="ch-head">
+      <div class="ch-no">卷二</div>
+      <div><div class="ch-title">事业与财</div><div class="ch-en">CAREER · WEALTH</div></div>
+      <div class="ch-line"></div>
+    </div>
+
+    <div class="method" id="m-guanlu">
+      <div class="m-title">职业主线 <span class="m-tag red">以印化杀·以技立身</span></div>
+      <div class="kf"><b>核心</b>：以印化杀、以技立身。不适合纯经商（财弱）、不适合纯体力；适合靠专业能力和学问吃饭——有"权威感"的专家路线。</div>
+      <div class="kf"><b>正官+正印</b>：老师、顾问、医师、专家、内容创作者——"被信任的专业人士"。</div>
+      <div class="kf"><b>伤官配印（丁酉运）</b>：才华有学问支撑，越老越值钱——写作、讲课、咨询、医疗、文化内容。</div>
+      <div class="kf"><b>一生主线</b>：25前表达起步(主持) → 25-34奔波求财(策划) → 35-44扎根专业 → <b>45-54人生最亮十年</b>(学成立身) → 55-64玄学医术精进。</div>
+    </div>
+
+    <div class="method" id="m-shouru">
+      <div class="m-title">收入结构 <span class="m-tag gold">财星得养</span></div>
+      <div class="source">据 2026 年自述整理（约 68-80 万/年）</div>
+      <table class="mini">
+        <tr><th>来源</th><th>年收入</th><th>命理角色</th></tr>
+        <tr><td>餐厅2</td><td>~40万</td><td><b>禄存·压舱石</b>——稳定之财</td></tr>
+        <tr><td>品牌策划</td><td>10-20万</td><td>天机化科·技能现金</td></tr>
+        <tr><td>主持</td><td>6.5-7.8万</td><td>口才·表达副线</td></tr>
+        <tr><td>餐厅1</td><td>7-8万</td><td>小额稳定</td></tr>
+        <tr><td>自媒体+课程</td><td>~5万+</td><td>食伤生财·未来主线</td></tr>
+      </table>
+      <div class="kf"><b>关键判断</b>：收入本质是"帮身运(戊戌)托起来的"——身强能担财，不是财星旺。所以收入稳但天花板由"身强"决定。</div>
+      <div class="kf"><b>餐厅2是转型底气</b>：哪怕云南头两年不赚钱也不慌。但走之前务必培养店长，避免远程耗神。</div>
+    </div>
+
+    <div class="method" id="m-caifu">
+      <div class="m-title">散财与聚财 <span class="m-tag">先散后聚</span></div>
+      <div class="kf"><b>散财四因</b>：①身弱财虚担不住财 ②官杀重=为关系付账 ③六爻兄弟爻动=结构分财 ④华盖清高不重财。</div>
+      <div class="kf"><b>守财之根</b>：疾厄宫禄存——钱跟身体、长线、经营绑定，不跟投机绑定。餐厅2年入40万即禄存之证。</div>
+      <div class="kf"><b>已在聚财轨道</b>：2021戊戌大运身渐强，"担得起财"了；45岁后丁酉运财的性质从"流"变"存"（作品即资产）。</div>
+      <div class="kf"><b>父母之助</b>：年干正印=父母宫为印(庇护支持)——"印星生身"，是有靠山的象，不是欠债的象。</div>
+      <div class="verify"><span class="vt">一句话</span>先散出去的都是后半生收得回来的——包括人心，也包括自己的路。你不是守财奴的命，是"先散后聚、以义养财"的命。</div>
+    </div>
+  </section>
+
+  <!-- ============ 卷三 · 灵性 ============ -->
+  <section class="chapter" id="ch-lingxing">
+    <div class="ch-head">
+      <div class="ch-no">卷三</div>
+      <div><div class="ch-title">灵性之路</div><div class="ch-en">THE SPIRITUAL PATH</div></div>
+      <div class="ch-line"></div>
+    </div>
+
+    <div class="method" id="m-juewu">
+      <div class="m-title">觉悟之问 <span class="m-tag red">根基齐全·障碍清楚</span></div>
+      <div class="kf"><b>根基</b>：八字正印透干+杀印相生（信根/慧根来自血脉）；紫微福德宫日月化禄（内心光明福报厚）；六爻子孙持世（求自在之心）。</div>
+      <div class="kf"><b>障碍</b>：①魁罡"用力过猛"——把修行当任务/进度条 ②官杀重思虑内耗——与禅定直接冲突 ③亥巳冲——修行路上易反复动摇。</div>
+      <div class="verify"><span class="vt">诚实回答</span>命盘给了"最有利的条件"和"最危险的坑"，但觉悟是实修的事——命理是天气预报，掌舵的还是你自己。</div>
+    </div>
+
+    <div class="method" id="m-xiuxing">
+      <div class="m-title">修行路线 <span class="m-tag gold">闻思修·火性法门</span></div>
+      <div class="kf"><b>杀印相生=以经教智慧化解烦恼</b>——先读经(印)，再实修(化杀)。地藏经、清静经、内经全是"印"的路子。</div>
+      <div class="kf"><b>火为用神</b>——适合光明温暖智慧的法门：念佛、观想光明、诵经、动功(八部金刚功属阳)。不宜一味枯坐。</div>
+      <div class="kf"><b>魁罡功课要"松"</b>：打地藏七、千声圣号、金刚跪40分钟——全是"狠劲"。最大的坎是执着进度，功课要松着做。</div>
+      <div class="kf"><b>蹇卦提醒"见险能止"</b>：修行不是硬冲，是知道什么时候该停、该松。</div>
+    </div>
+
+    <div class="method" id="m-lingcheng">
+      <div class="m-title">灵性成就 <span class="m-tag">华盖·天梁·日月</span></div>
+      <div class="kf"><b>三条铁证</b>：①华盖坐财帛宫——能靠灵性/玄学/医道吃饭 ②天梁坐身宫——一生与宗教医疗渡人缘分深 ③福德日月化禄——修行有福报支撑，越修越顺。</div>
+      <table class="mini">
+        <tr><th>时间</th><th>盘面</th><th>灵性意义</th></tr>
+        <tr><td>现在-44岁</td><td>戊戌大运</td><td>筑基期——诵经学医打基础，不要急</td></tr>
+        <tr><td>44-53岁</td><td>华盖大限</td><td>灵性/五术成熟期——系统化，可能遇明师</td></tr>
+        <tr><td>45-54岁</td><td>丁酉大运</td><td>学问大成，灵性与专业合一(医道/文化)</td></tr>
+        <tr><td>55-64岁</td><td>丙申大运</td><td>偏印主玄学宗教医学——灵性丰收期</td></tr>
+      </table>
+      <div class="verify"><span class="vt">总断</span>春种在当下，花开在中年之后。现在每一分功课、每一分学问，都是在给"44岁后的你"浇水。</div>
+    </div>
+  </section>
+
+  <!-- ============ 卷四 · 方位 ============ -->
+  <section class="chapter" id="ch-fangwei">
+    <div class="ch-head">
+      <div class="ch-no">卷四</div>
+      <div><div class="ch-title">方位与生活</div><div class="ch-en">DIRECTION · PLACE</div></div>
+      <div class="ch-line"></div>
+    </div>
+
+    <div class="method" id="m-yunnan">
+      <div class="m-title">云南之约 <span class="m-tag red">利西南·坤土火阳</span></div>
+      <div class="kf"><b>六爻</b>：蹇卦「利西南，不利东北」——你人在长春(东北)，心向云南(西南)，卦辞直接印在人生地图上。</div>
+      <div class="kf"><b>八字</b>：用神火土——长春艮土寒水克火(印星受压)，云南坤土+高原日照(火土得地)。出生地额尔古纳是水最重之地，人生后半场该往火土走。</div>
+      <div class="kf"><b>紫微</b>：迁移宫天梁=宜文化底蕴、有庇护感之地；财帛华盖=大理灵修社区土壤；福德日月=内心向往灵性工作/文化/中医/灵性自媒体。</div>
+      <div class="kf"><b>区分两种"想去"</b>：逃避型(讨厌现在)→会幻灭；召命型(内心知道那里有土壤)→越走越实。从你的状态看更像召命型。</div>
+    </div>
+
+    <div class="method" id="m-nianfen">
+      <div class="m-title">哪一年去 <span class="m-tag gold">三盘共振</span></div>
+      <table class="mini">
+        <tr><th>年份</th><th>信号</th><th>动作</th></tr>
+        <tr><td><b>2026 丙午</b></td><td>火印旺·学习入门年</td><td>旅居试水1-2个月，播种子</td></tr>
+        <tr><td><b>2027 丁未</b></td><td>未土=西南方位+丁火印透+土帮身</td><td><b>最可能落地之年</b>——迁居或半定居关键一步</td></tr>
+        <tr><td><b>2030-2031</b></td><td>44岁华盖大限开始</td><td>彻底扎根，以灵性/医道/内容立身</td></tr>
+      </table>
+      <div class="verify"><span class="vt">一句话</span>2026 试水 → 2027 落地 → 2030+ 扎根开花。</div>
+    </div>
+
+    <div class="method" id="m-shengtai">
+      <div class="m-title">身体调理 <span class="m-tag">火土为用</span></div>
+      <div class="kf"><b>八字体质</b>：木旺克土=脾胃弱(消化/腹胀)；木旺=肝胆易郁(情绪紧张时肝区紧、易怒)；金弱=肺/大肠/皮肤偏弱；水弱=肾水不足易透支。</div>
+      <div class="kf"><b>调理方向</b>：温养脾胃(小米/姜/山药)、早睡养肝胆、少思虑多动(八部金刚功疏肝健脾)。</div>
+      <div class="kf"><b>六爻提醒</b>：世应亥巳冲=心肾不交，睡眠心神易波动；六爻白虎=膝盖筋骨用功过度要留意(金刚跪量力)。</div>
+    </div>
+  </section>
+
+  <!-- ============ 卷五 · 总断 ============ -->
+  <section class="chapter" id="ch-zongjie">
+    <div class="ch-head">
+      <div class="ch-no">卷五</div>
+      <div><div class="ch-title">总断</div><div class="ch-en">THE VERDICT</div></div>
+      <div class="ch-line"></div>
+    </div>
+    <div class="method">
+      <div class="m-title">三盘合参一句话</div>
+      <div class="white">你是<b>"杀印相生"</b>的命——压力越大，越要往学问和信仰里走；走进去了，压力就变成你的力量。</div>
+      <div class="kf"><b>方位</b>：南方/西南最合（广州、成都、昆明）——你现在已在南方大方向，云南是命理与内心双重指向之地。</div>
+      <div class="kf"><b>事业</b>：以印化杀、以技立身；餐厅2是禄存压舱石，45岁后伤官配印"作品即资产"。</div>
+      <div class="kf"><b>灵性</b>：根基齐全（正印+日月化禄+子孙持世），障碍清楚（用力过猛+思虑重）；44岁后华盖大限开花。</div>
+      <div class="kf"><b>财</b>：先散后聚、以义养财；现在已在聚财轨道。</div>
+      <div class="verify"><span class="vt">最末一句</span>命理能算到"你会遇见什么季节"，算不到"你会不会开花"。你的季节已经算出来了——春种在当下，花开在中年之后。</div>
+    </div>
+  </section>
+
+  <div class="footnote">
+    <p>※ 本卷为 2026-08-16 会话之命理合参整理，仅供修学参考，不构成人生决策之唯一依据。</p>
+    <p>※ 八字(立春换年)/紫微(金四局)/六爻(水山蹇→地山谦)三盘均经程序排盘核实。</p>
+  </div>
+
+</div>
+
+<script>
+  // 回顶
+  const bt = document.getElementById('backtop');
+  window.addEventListener('scroll', ()=> bt.classList.toggle('show', window.scrollY > 600));
+  bt.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+  // 移动端导航
+  const navToggle = document.getElementById('nav-toggle');
+  const navItems = document.getElementById('nav-items');
+  if(navToggle && navItems){
+    navToggle.addEventListener('click', ()=> navItems.classList.toggle('open'));
+    document.querySelectorAll('.nav-item').forEach(item=>{
+      item.addEventListener('click', e=>{
+        if(window.innerWidth <= 720 && item.querySelector('.nav-sub')){
+          e.preventDefault();
+          item.classList.toggle('open');
+        }
+      });
+    });
+    navItems.addEventListener('click', e=>{
+      if(e.target.closest('.nav-sub a')) navItems.classList.remove('open');
+    });
+  }
+</script>
+</body>
+</html>
