@@ -221,9 +221,97 @@
   .zi-item{border:1px solid var(--line-soft);border-radius:6px;padding:14px 16px;background:rgba(255,253,246,.5);}
   .zi-item b{display:block;color:var(--cinnabar-dark);font-size:14.5px;letter-spacing:.08em;margin-bottom:6px;}
   .zi-item span{font-size:13.5px;color:var(--ink-soft);line-height:1.8;}
+
+  /* ===== 顶部导航(古风卷轴) ===== */
+  .topnav{
+    position:sticky;top:0;z-index:200;background:rgba(246,239,224,.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);box-shadow:0 2px 12px rgba(120,100,60,.10);
+  }
+  .topnav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:8px 14px;flex-wrap:wrap;}
+  .nav-brand{font-size:15px;font-weight:700;letter-spacing:.15em;color:var(--cinnabar-dark);margin-right:14px;white-space:nowrap;}
+  .nav-brand span{color:var(--gold);}
+  .nav-item{position:relative;}
+  .nav-link{
+    display:block;padding:8px 12px;font-size:13.5px;color:var(--ink);text-decoration:none;
+    letter-spacing:.08em;border-radius:5px;transition:all .3s;white-space:nowrap;
+  }
+  .nav-link:hover{background:rgba(166,61,47,.10);color:var(--cinnabar-dark);}
+  .nav-link.has-sub::after{content:"▾";margin-left:5px;font-size:10px;color:var(--cinnabar);}
+  .nav-item:hover .nav-sub{display:block;}
+  .nav-sub{
+    display:none;position:absolute;top:100%;left:0;min-width:200px;z-index:300;
+    background:rgba(250,245,233,.98);border:1px solid var(--line);border-radius:6px;
+    box-shadow:0 8px 22px rgba(90,70,40,.14);padding:6px;margin-top:2px;
+  }
+  .nav-sub a{
+    display:block;padding:9px 14px;font-size:13px;color:var(--ink-soft);text-decoration:none;
+    border-radius:4px;transition:all .2s;border-bottom:1px dashed var(--line-soft);
+  }
+  .nav-sub a:last-child{border-bottom:none;}
+  .nav-sub a:hover{background:rgba(166,61,47,.08);color:var(--cinnabar-dark);}
+  .nav-sub .sub-head{font-size:11px;color:var(--gold);letter-spacing:.2em;padding:6px 14px 4px;}
+  /* 移动端汉堡 */
+  .nav-toggle{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);
+    font-family:inherit;font-size:14px;padding:6px 12px;border-radius:5px;cursor:pointer;}
+  @media(max-width:720px){
+    .nav-toggle{display:block;}
+    .nav-items{display:none;width:100%;flex-direction:column;padding:6px 0;}
+    .nav-items.open{display:flex;}
+    .nav-item{width:100%;}
+    .nav-sub{position:static;display:none;box-shadow:none;border:none;padding-left:18px;min-width:0;}
+    .nav-item.open .nav-sub{display:block;}
+    .nav-link.has-sub::after{content:"▸";}
+    .nav-item.open .nav-link.has-sub::after{content:"▾";}
+  }
 </style>
 </head>
 <body>
+
+<!-- 顶部导航 -->
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="nav-brand">修行<span>手卷</span></div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="菜单">☰ 目录</button>
+    <div class="nav-items" id="nav-items">
+      <div class="nav-item"><a class="nav-link" href="#cover">卷首</a></div>
+      <div class="nav-item"><a class="nav-link" href="#ch-tonggang">总纲</a></div>
+      <div class="nav-item"><a class="nav-link has-sub" href="#ch-rigong">日课</a>
+        <div class="nav-sub">
+          <a href="#m-jingang">八部金刚功</a>
+          <a href="#m-anban">安那般那观息</a>
+          <a href="#m-qingjing">常清静经</a>
+          <a href="#m-dizang">地藏经</a>
+          <a href="#m-shenghao">地藏圣号千声</a>
+          <a href="#m-lifo">礼佛忏悔</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link has-sub" href="#ch-cidi">次第</a>
+        <div class="nav-sub">
+          <a href="#m-jieling">阶零 · 筑基</a>
+          <a href="#m-jieyi">阶一 · 止观</a>
+          <a href="#m-jieer">阶二 · 通督</a>
+          <a href="#m-jiesan">阶三 · 丹道</a>
+          <a href="#m-jiesi">阶四 · 化神</a>
+          <a href="#m-jiewu">阶五 · 明心</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link has-sub" href="#ch-zhiji">知己</a>
+        <div class="nav-sub">
+          <a href="#m-yiyuan">医缘命理</a>
+          <a href="#m-yishu">身体即医书</a>
+          <a href="#m-xueyi">学医次第</a>
+          <a href="#m-tianshi">天时已至</a>
+          <a href="#m-shudan">书单 · 古籍阅读</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="#ch-huchi">护持</a></div>
+      <div class="nav-item"><a class="nav-link" href="#ch-hongxian">红线</a></div>
+      <div class="nav-item"><a class="nav-link" href="#ch-daka">打卡</a></div>
+      <div class="nav-item"><a class="nav-link" href="guji/reader.html" target="_blank" rel="noopener">古籍阅读</a></div>
+      <div class="nav-item"><a class="nav-link" href="guji/lixin-daodu.html" target="_blank" rel="noopener">李辛导读</a></div>
+    </div>
+  </div>
+</nav>
 
 <!-- 悬浮回顶 -->
 <button class="backtop" id="backtop" title="回顶">回顶</button>
@@ -245,7 +333,7 @@
   </section>
 
   <!-- ============ 卷首 · 命盘要旨 ============ -->
-  <section class="chapter reveal">
+  <section class="chapter reveal" id="cover">
     <div class="ch-head">
       <div class="ch-no">卷首</div>
       <div>
@@ -255,7 +343,7 @@
       <div class="ch-line"></div>
     </div>
     <p class="ch-lead">此卷为君量身而设。八字丁卯 壬寅 戊戌 乙卯，紫微金四局，命宫天同化权，福德日月同宫、太阴化禄，财帛华盖，身宫天梁——<b>慧根福德俱足，天生与玄门佛道有缘</b>。然官杀重而身弱，陀罗坐身宫，故修行之要诀有二：<b>一曰松，二曰恒</b>。</p>
-    <div class="method reveal">
+    <div class="method reveal" id="m-weini">
       <div class="m-title">为你而设的三句话 <span class="m-tag gold">命理印证</span></div>
       <div class="verse">
         <span class="vt">《地藏菩萨本愿经》· 校量布施功德缘品</span>
@@ -267,7 +355,7 @@
   </section>
 
   <!-- ============ 卷一 · 总纲 ============ -->
-  <section class="chapter reveal">
+  <section class="chapter reveal" id="ch-tonggang">
     <div class="ch-head">
       <div class="ch-no">卷一</div>
       <div>
@@ -276,7 +364,7 @@
       </div>
       <div class="ch-line"></div>
     </div>
-    <div class="method reveal">
+    <div class="method reveal" id="m-tonggang">
       <div class="m-title">以佛为性 · 以道为命 <span class="m-tag">总纲</span></div>
       <div class="verse">
         <span class="vt">《黄帝内经·素问·上古天真论》</span>
@@ -292,7 +380,7 @@
   </section>
 
   <!-- ============ 卷二 · 日课 ============ -->
-  <section class="chapter reveal">
+  <section class="chapter reveal" id="ch-rigong">
     <div class="ch-head">
       <div class="ch-no">卷二</div>
       <div>
@@ -322,7 +410,7 @@
       </div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-jingang">
       <div class="m-title">八部金刚功 <span class="m-tag red">动功</span><span class="m-tag">出处 · 张至顺道长传授</span></div>
       <div class="source">出处：<b>《米晶子济世良方》附·八部金刚功</b>（张至顺道长 · 全真龙门派第二十一代）</div>
       <div class="white"><span class="wt">白话</span>八部金刚功为全真龙门派千年传承的导引动功，晨起空腹练习，以调畅气机、抻筋拔骨，属"炼形"一法。动作务必参照张至顺道长原版视频逐式学习，切勿仅凭文字臆测。</div>
@@ -341,7 +429,7 @@
       <div class="note"><span class="nt">为你而设</span>你八字木旺（肝木太过）克土，金刚功第四、五式专疏肝气；且晨起动功开阳，正合你"早起"习惯。注意膝盖旧伤——动作放缓，勿强求低式。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-anban">
       <div class="m-title">安那般那 · 观息法 <span class="m-tag red">静坐</span><span class="m-tag">止观正路</span></div>
       <div class="source">出处：<b>《杂阿含经》卷二十九 第803经</b> · <b>《佛说大安般守意经》</b></div>
       <div class="verse">
@@ -365,7 +453,7 @@
       <div class="note"><span class="nt">为你而设</span>你已亲历"湖底静谧""欲飘起"之境——那是轻安与身空，皆好境界，但记住：<b>来者不迎，去者不送</b>。境界是路标，不是家。隆波帕默《看见真相》之观心法，正是从"观息"转入"观心"的桥。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-qingjing">
       <div class="m-title">常清静经 <span class="m-tag gold">日诵</span></div>
       <div class="source">出处：<b>《太上老君说常清静经》</b>（道门日诵必持，约三百九十字）</div>
       <div class="verse">
@@ -383,7 +471,7 @@
       <div class="verify"><span class="vt">验 证</span>诵后心平气静；遇事易怒时，此句能一诵即缓，即算入门。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-dizang">
       <div class="m-title">地藏经 <span class="m-tag red">愿力之根</span></div>
       <div class="source">出处：<b>《地藏菩萨本愿经》</b>（唐·实叉难陀译）</div>
       <div class="verse">
@@ -405,7 +493,7 @@
       <div class="verify"><span class="vt">验 证</span>诵时心能随文不散乱；诵后身心轻安；梦境安稳（地藏经有"转梦"之验，但勿求梦、勿执梦）。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-shenghao">
       <div class="m-title">地藏圣号千声 <span class="m-tag red">念佛法门</span></div>
       <div class="source">出处：<b>《楞严经》· 大势至菩萨念佛圆通章</b> · <b>《地藏菩萨本愿经》· 见闻利益品</b></div>
       <div class="verse">
@@ -426,7 +514,7 @@
       <div class="verify"><span class="vt">验 证</span>念时妄念渐少；念后心静身安；连续 1000 天不断，是愿力之验——此即你"成功在意料之外"那一卦中所言愿力的实践。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-lifo">
       <div class="m-title">礼佛忏悔 <span class="m-tag red">忏法</span><span class="m-tag">八十八佛 · 占察忏</span></div>
       <div class="source">出处：<b>五十三佛《佛说观药王药上二菩萨经》</b> · <b>三十五佛《大宝积经·优波离会》</b> · <b>占察忏（明·藕益大师依《占察善恶业报经》制）</b></div>
       <div class="verse">
@@ -445,7 +533,7 @@
   </section>
 
   <!-- ============ 卷三 · 次第 ============ -->
-  <section class="chapter reveal">
+  <section class="chapter reveal" id="ch-cidi">
     <div class="ch-head">
       <div class="ch-no">卷三</div>
       <div>
@@ -456,7 +544,7 @@
     </div>
     <p class="ch-lead">每一阶都有<b>可验证</b>的标尺——不搞玄虚，不以境界为凭，以身心实相为据。</p>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-jieling">
       <div class="m-title">阶零 · 筑基收摄 <span class="m-tag gold">90天</span></div>
       <div class="source">依据：<b>《道德经》第十章</b>「专气致柔，能如婴儿乎？」</div>
       <div class="white"><span class="wt">白话</span>先求"不断"，不求"量大"。把日课固定成生物钟，让修行像吃饭睡觉一样自然。专气致柔——气要专、心要柔，此即筑基。</div>
@@ -469,7 +557,7 @@
       <div class="verify"><span class="vt">验 证</span>连续 90 天不断档；睡眠改善；静坐稳坐 30 分钟；气感更柔和（由"一股股上拔"转为"温煦绵长"）。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-jieyi">
       <div class="m-title">阶一 · 止观入门 <span class="m-tag gold">3-6个月</span><span class="m-tag red">性功</span></div>
       <div class="source">依据：<b>《六妙法门》（天台智者大师）</b>「一数、二随、三止、四观、五还、六净」· <b>《占察善恶业报经》止观章</b></div>
       <div class="verse">
@@ -487,7 +575,7 @@
       <div class="note"><span class="nt">为你而设</span>你的"观佛、息相、欲飘"三验，已在止观门口。隆波帕默尊者法门是当世最稳妥的观心路，按《看见真相》一书次第修，不杂他法，三个月必见功。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-jieer">
       <div class="m-title">阶二 · 命功通督 <span class="m-tag gold">6-12个月</span><span class="m-tag red">命功</span></div>
       <div class="source">依据：<b>李少波《真气运行法》五步功</b> · 总纲见 <b>《黄帝内经·素问》</b>「恬淡虚无，真气从之」</div>
       <div class="verse">
@@ -507,7 +595,7 @@
       <div class="note"><span class="nt">为你而设（重点）</span>你已有"一股股往上拔"的壮火倾向——记住四字诀"<b>勿忘勿助</b>"：气来则知，气不来不催。宁文勿武，宁慢勿快。若头部胀痛、胸闷、气乱窜，立即停功、放松、念圣号，次日再续。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-jiesan">
       <div class="m-title">阶三 · 丹道筑基 <span class="m-tag gold">1-3年</span><span class="m-tag red">命功</span></div>
       <div class="source">依据：<b>《钟吕传道集》</b> · <b>《灵宝毕法》</b> · <b>张伯端《悟真篇》</b></div>
       <div class="verse">
@@ -529,7 +617,7 @@
       <div class="note"><span class="nt">为你而设（重要）</span>通督之后、丹道筑基起，<b>务必寻明师指点</b>——网络短视频碎片最易出偏。你听丹道短视频多年，如今已有实证基础，正是"访师"之时：可先参加正统丹道/真气运行法面授班（如李少波真气运行法官方培训），把功夫落在明师眼下。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-jiesi">
       <div class="m-title">阶四 · 炼气化神 <span class="m-tag gold">3-10年</span></div>
       <div class="source">依据：<b>《金丹四百字》（张伯端）</b></div>
       <div class="verse">
@@ -545,7 +633,7 @@
       <div class="verify"><span class="vt">验 证</span>全身气感一体；呼吸绵长近无；身轻体健、寒暑不侵之渐；心地愈明。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-jiewu">
       <div class="m-title">阶五 · 明心见性 <span class="m-tag gold">终生</span><span class="m-tag red">性功·究竟</span></div>
       <div class="source">依据：<b>《六祖坛经》</b> · <b>《般若波罗蜜多心经》</b> · <b>《金刚般若波罗蜜经》</b> · 憨山大师《观心铭》</div>
       <div class="verse">
@@ -571,7 +659,7 @@
   </section>
 
   <!-- ============ 卷四 · 知己 ============ -->
-  <section class="chapter reveal">
+  <section class="chapter reveal" id="ch-zhiji">
     <div class="ch-head">
       <div class="ch-no">卷四</div>
       <div>
@@ -582,7 +670,7 @@
     </div>
     <p class="ch-lead">君问："学中医最大的点，是想了解自己。"——此问本身即是医缘。命盘昭然：身宫天梁（医星）、财帛华盖（五术）、福德日月（阴阳）、日坐魁罡（能啃硬书）、正印透干（学问为用神）。<b>想学医，是命里带的；想借医了解自己，是入道正门。</b></p>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-yiyuan">
       <div class="m-title">医缘命理 <span class="m-tag red">五证</span></div>
       <div class="zi-grid">
         <div class="zi-item"><b>身宫天梁 · 医星</b><span>天梁为南斗医星、荫星、宗教星。坐身宫 → 一生与医疗、救助、宗教缘分深。你为姥姥诵经、为老丈人发愿、想治病救人——正是天梁之性。</span></div>
@@ -594,7 +682,7 @@
       </div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-yishu">
       <div class="m-title">身体即医书 <span class="m-tag red">从自己入门</span></div>
       <div class="source">依据：<b>《灵枢·经脉》</b>「经络者，所以决死生，处百病，调虚实，不可不通」· <b>《素问·阴阳应象大论》</b>「怒伤肝，思伤脾」</div>
       <div class="white"><span class="wt">白话</span>你要"了解自己"——你的身体就是第一本医书，你是自己最好的病例：</div>
@@ -607,7 +695,7 @@
       <div class="verify"><span class="vt">自证法</span>学舌诊先照镜看自己的舌（肝郁者舌边多红、苔多薄腻）；学脉诊先摸自己的脉（晨起未动时最准）；学经络在自己身上寻气感。以己证经，以经证己。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-xueyi">
       <div class="m-title">学医次第 <span class="m-tag gold">由浅入深</span><span class="m-tag red">可验证</span></div>
       <div class="source">依据：<b>《素问·上古天真论》</b>「上古之人，其知道者，法于阴阳，和于术数」</div>
       <div class="sop">
@@ -620,7 +708,7 @@
       <div class="verify"><span class="vt">验 证</span>① 三个月内能说出自己体质的阴阳五行归属；② 半年内能自察舌象、脉象变化（如熬夜后舌苔变化）；③ 一年内能读懂《内经》选篇原文；④ 身体力行见效（调作息后睡眠、消化改善）——以己身之变为第一验证。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-tianshi">
       <div class="m-title">天时已至 <span class="m-tag gold">时间窗口</span></div>
       <div class="verse">
         <span class="vt">《素问·四气调神大论》</span>
@@ -636,20 +724,20 @@
       <div class="note"><span class="nt">结论</span>不必等"有钱后"才开始——今年先入个门，45岁前后正是学医立身的黄金窗口。命盘完全支持你的规划，且比你想的更好：<b>不用等到退休，中年即是医者之始。</b></div>
     </div>
 
-    <div class="method reveal">
-      <div class="m-title">书单 · 阅读入口 <span class="m-tag red">一点即读</span></div>
-      <div class="source">说明：以下为正式出版物，受版权保护。网页不载全文，点击直达<b>官方正版平台</b>阅读（微信读书/得到/豆瓣），手机一点即开。</div>
+    <div class="method reveal" id="m-shudan">
+      <div class="m-title">书单 · 阅读入口 <span class="m-tag red">站内直读</span></div>
+      <div class="source">古籍全文已收录站内，<b>点开直接读、可选章节</b>；现代出版物附原创导读。</div>
       <ul class="booklist">
-        <li><span class="bt">《经典中医启蒙》 · 李辛</span><span class="bd">开中医之门的现代经典：从"气、神、能量"看身体。→ <a href="https://weread.qq.com/web/search/books?keyword=%E7%BB%8F%E5%85%B8%E4%B8%AD%E5%8C%BB%E5%90%AF%E8%92%99" target="_blank" rel="noopener">微信读书</a> · <a href="https://book.douban.com/subject/27006118/" target="_blank" rel="noopener">豆瓣</a></span></li>
-        <li><span class="bt">《精神健康讲记》 · 李辛</span><span class="bd">精神、情绪与身体能量的关系，与修行观心相印证。→ <a href="https://weread.qq.com/web/search/books?keyword=%E7%B2%BE%E7%A5%9E%E5%81%A5%E5%BA%B7%E8%AE%B2%E8%AE%B0" target="_blank" rel="noopener">微信读书</a> · <a href="https://book.douban.com/subject/30160958/" target="_blank" rel="noopener">豆瓣</a></span></li>
-        <li><span class="bt">《黄帝内经·素问》上古天真论 / 四气调神大论</span><span class="bd">医道同源的源头。→ <a href="https://weread.qq.com/web/search/books?keyword=%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F" target="_blank" rel="noopener">微信读书</a> · <a href="https://ctext.org/huangdi-neijing" target="_blank" rel="noopener">中国哲学书电子化计划(全文)</a></span></li>
-        <li><span class="bt">《伤寒论》 · 张仲景</span><span class="bd">辨证论治之祖，进阶必读。→ <a href="https://weread.qq.com/web/search/books?keyword=%E4%BC%A4%E5%AF%92%E8%AE%BA" target="_blank" rel="noopener">微信读书</a> · <a href="https://ctext.org/shang-han-lun" target="_blank" rel="noopener">中国哲学书电子化计划(全文)</a></span></li>
+        <li><span class="bt">《黄帝内经·素问》 · 战国 佚名</span><span class="bd">全文收录 60 篇，含上古天真论、四气调神大论。→ <a href="guji/reader.html" target="_blank" rel="noopener">📖 站内阅读（全文·选章节）</a></span></li>
+        <li><span class="bt">《伤寒论》（宋版） · 汉 张仲景</span><span class="bd">辨证论治之祖，全文收录。→ <a href="guji/reader.html" target="_blank" rel="noopener">📖 站内阅读（全文·选章节）</a></span></li>
+        <li><span class="bt">《经典中医启蒙》 · 李辛</span><span class="bd">开中医之门的现代经典：从"气、神、能量"看身体。→ <a href="guji/lixin-daodu.html" target="_blank" rel="noopener">📖 站内导读（原创梳理）</a></span></li>
+        <li><span class="bt">《精神健康讲记》 · 李辛</span><span class="bd">精神、情绪与身体能量的关系，与修行观心相印证。→ <a href="guji/lixin-daodu.html" target="_blank" rel="noopener">📖 站内导读（原创梳理）</a></span></li>
         <li><span class="bt">《米晶子济世良方》 · 张至顺</span><span class="bd">道医同源，你书架已有，八部金刚功出处。</span></li>
       </ul>
-      <div class="note"><span class="nt">版权说明</span>李辛两书为受版权保护的正版出版物，本站不提供全文；若你已购正版电子版（微信读书/得到），可在对应App书架直接阅读。若你手上有正版PDF文件，可交给我做成站内阅读页。</div>
+      <div class="note"><span class="nt">版权说明</span>《黄帝内经》《伤寒论》为古代经典（公有领域），全文收录站内；李辛两书为受版权保护的正版出版物，本站提供<b>原创导读</b>（核心框架与思路，不转载原文），如需精读请购正版书。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-shenghuo">
       <div class="m-title">生活启示 <span class="m-tag gold">卯戌合火</span></div>
       <div class="verse">
         <span class="vt">《滴天髓》· 天道</span>
@@ -666,7 +754,7 @@
   </section>
 
   <!-- ============ 卷五 · 护持 ============ -->
-  <section class="chapter reveal">
+  <section class="chapter reveal" id="ch-huchi">
     <div class="ch-head">
       <div class="ch-no">卷五</div>
       <div>
@@ -676,7 +764,7 @@
       <div class="ch-line"></div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-dayi">
       <div class="m-title">大医精诚 <span class="m-tag gold">发愿文</span></div>
       <div class="source">出处：<b>孙思邈《备急千金要方》卷一</b></div>
       <div class="verse">
@@ -686,7 +774,7 @@
       <div class="white"><span class="wt">白话</span>此段虽言医道，实是发菩提心之文：治病先安神定志、无欲无求，对一切人平等如至亲。你每日诵之，是把"慈悲"化为日用——修行不在座上，在座下待人接物。</div>
     </div>
 
-    <div class="method reveal">
+    <div class="method reveal" id="m-riyong">
       <div class="m-title">日用修行三句 <span class="m-tag gold">座下功夫</span></div>
       <div class="verse">
         <span class="vt">《道德经》第四十八章</span>
@@ -702,7 +790,7 @@
   </section>
 
   <!-- ============ 卷六 · 红线 ============ -->
-  <section class="chapter reveal">
+  <section class="chapter reveal" id="ch-hongxian">
     <div class="ch-head">
       <div class="ch-no">卷六</div>
       <div>
@@ -724,7 +812,7 @@
   </section>
 
   <!-- ============ 卷末 · 打卡 ============ -->
-  <section class="chapter reveal">
+  <section class="chapter reveal" id="ch-daka">
     <div class="ch-head">
       <div class="ch-no">卷末</div>
       <div>
@@ -733,7 +821,7 @@
       </div>
       <div class="ch-line"></div>
     </div>
-    <div class="method reveal">
+    <div class="method reveal" id="m-daka">
       <div class="m-title">每日功过格 <span class="m-tag gold">仿袁了凡功过格</span></div>
       <div class="source">出处：<b>《了凡四训》· 功过格</b>（明·袁了凡）</div>
       <div class="white"><span class="wt">白话</span>袁了凡以功过格自省改命——日行一善记功，日有过失记过。你也可将每日功课记为"功"，妄语嗔怒记为"过"，月底一结，见己之进。</div>
@@ -776,6 +864,30 @@
     bt.classList.toggle('show', window.scrollY > 600);
   });
   bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  // 移动端导航
+  const navToggle = document.getElementById('nav-toggle');
+  const navItems = document.getElementById('nav-items');
+  if(navToggle && navItems){
+    navToggle.addEventListener('click', ()=>{
+      navItems.classList.toggle('open');
+    });
+    // 移动端子菜单点击展开
+    document.querySelectorAll('.nav-item').forEach(item=>{
+      item.addEventListener('click', e=>{
+        if(window.innerWidth <= 720 && item.querySelector('.nav-sub')){
+          e.preventDefault();
+          item.classList.toggle('open');
+        }
+      });
+    });
+    // 点链接后收起菜单
+    navItems.addEventListener('click', e=>{
+      if(e.target.closest('.nav-sub a')){
+        navItems.classList.remove('open');
+      }
+    });
+  }
 </script>
 </body>
 </html>
