@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>流 年 运 程 表 2026-2033 · 王昕</title>
+<style>
+  :root{
+    --paper:#f6efe0;--paper2:#efe5cd;--ink:#2e2922;--ink-soft:#5a5144;
+    --cinnabar:#a63d2f;--cinnabar-dark:#8c3226;--jade:#4e6b5c;--gold:#b08d4f;
+    --line:#d9cbb0;--line-soft:#e6dcc4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Kaiti SC","STKaiti","KaiTi","BiauKai","FangSong","STFangsong","Songti SC","STSong","SimSun",serif;
+    background:var(--paper);color:var(--ink);line-height:2;letter-spacing:.03em;-webkit-font-smoothing:antialiased;
+  }
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(ellipse 70% 45% at 85% 110%, rgba(176,141,79,.10), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 8% 90%, rgba(78,107,92,.08), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0 3px, rgba(120,100,70,.012) 3px 4px);}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px 140px;}
+
+  /* ===== 导航 ===== */
+  .topnav{position:sticky;top:0;z-index:200;background:rgba(246,239,224,.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);box-shadow:0 2px 12px rgba(120,100,60,.10);}
+  .topnav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:8px 14px;flex-wrap:wrap;}
+  .nav-brand{font-size:15px;font-weight:700;letter-spacing:.15em;color:var(--cinnabar-dark);margin-right:14px;white-space:nowrap;}
+  .nav-brand span{color:var(--gold);}
+  .nav-toggle{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);
+    font-family:inherit;font-size:14px;padding:6px 12px;border-radius:5px;cursor:pointer;}
+  .nav-item{position:relative;}
+  .nav-link{display:block;padding:8px 12px;font-size:13.5px;color:var(--ink);text-decoration:none;
+    letter-spacing:.08em;border-radius:5px;transition:all .3s;white-space:nowrap;}
+  .nav-link:hover{background:rgba(166,61,47,.10);color:var(--cinnabar-dark);}
+  .nav-link.has-sub::after{content:"▾";margin-left:5px;font-size:10px;color:var(--cinnabar);}
+  .nav-item:hover .nav-sub{display:block;}
+  .nav-sub{display:none;position:absolute;top:100%;left:0;min-width:210px;z-index:300;
+    background:rgba(250,245,233,.98);border:1px solid var(--line);border-radius:6px;
+    box-shadow:0 8px 22px rgba(90,70,40,.14);padding:6px;margin-top:2px;}
+  .nav-sub a{display:block;padding:9px 14px;font-size:13px;color:var(--ink-soft);text-decoration:none;
+    border-radius:4px;transition:all .2s;border-bottom:1px dashed var(--line-soft);}
+  .nav-sub a:last-child{border-bottom:none;}
+  .nav-sub a:hover{background:rgba(166,61,47,.08);color:var(--cinnabar-dark);}
+  @media(max-width:720px){
+    .nav-toggle{display:block;}
+    .nav-items{display:none;width:100%;flex-direction:column;padding:6px 0;}
+    .nav-items.open{display:flex;}
+    .nav-item{width:100%;}
+    .nav-sub{position:static;display:none;box-shadow:none;border:none;padding-left:18px;min-width:0;}
+    .nav-item.open .nav-sub{display:block;}
+    .nav-link.has-sub::after{content:"▸";}
+    .nav-item.open .nav-link.has-sub::after{content:"▾";}
+  }
+
+  /* ===== 封面 ===== */
+  .cover{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    position:relative;padding:70px 20px 50px;text-align:center;}
+  .cover::before{content:"";position:absolute;left:50%;top:8%;transform:translateX(-50%);
+    width:70%;height:70%;opacity:.5;pointer-events:none;
+    background:radial-gradient(ellipse at center, rgba(255,255,255,.6), transparent 70%);}
+  .cover-title{writing-mode:vertical-rl;font-size:clamp(38px,8vw,68px);font-weight:700;
+    letter-spacing:.3em;color:var(--ink);margin:0;line-height:1.2;text-shadow:2px 3px 6px rgba(90,70,40,.12);
+    animation:fadeIn 1.6s ease both;}
+  .cover-sub{margin-top:34px;font-size:clamp(12px,2.4vw,16px);color:var(--ink-soft);letter-spacing:.45em;
+    animation:fadeIn 2s .3s ease both;}
+  .cover-seal{margin-top:30px;width:58px;height:58px;border:2px solid var(--cinnabar);color:var(--cinnabar);
+    display:flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:.15em;transform:rotate(-4deg);
+    border-radius:6px;animation:fadeIn 2.2s .5s ease both;text-align:center;line-height:1.3;}
+  .cover-sig{margin-top:20px;font-size:12px;color:var(--ink-soft);letter-spacing:.3em;animation:fadeIn 2.2s .6s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ===== 章节 ===== */
+  .chapter{background:linear-gradient(180deg, rgba(255,253,246,.72), rgba(248,241,225,.5));
+    border:1px solid var(--line-soft);border-radius:10px;padding:32px 26px 28px;margin:32px 0;
+    box-shadow:0 4px 18px rgba(120,100,60,.06);}
+  .ch-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .ch-no{flex:none;font-size:13px;color:var(--cinnabar);border:1px solid var(--cinnabar);border-radius:4px;
+    padding:4px 9px;letter-spacing:.2em;}
+  .ch-title{font-size:21px;font-weight:700;letter-spacing:.1em;color:var(--ink);}
+  .ch-en{font-size:10.5px;color:var(--gold);letter-spacing:.26em;margin-top:3px;}
+  .ch-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);}
+
+  /* ===== 年卡 ===== */
+  .ycard{background:rgba(255,253,246,.6);border:1px solid var(--line-soft);border-radius:8px;
+    padding:22px 20px 18px;margin:20px 0;position:relative;overflow:hidden;}
+  .ycard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold);opacity:.55;}
+  .ycard.hot::before{background:var(--cinnabar);opacity:.75;}
+  .ycard.cool::before{background:var(--jade);opacity:.7;}
+  .y-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+  .y-year{font-size:22px;font-weight:700;letter-spacing:.06em;color:var(--ink);}
+  .y-gz{font-size:18px;color:var(--cinnabar-dark);letter-spacing:.14em;font-weight:700;}
+  .y-age{font-size:12.5px;color:var(--ink-soft);background:rgba(176,141,79,.14);padding:2px 9px;border-radius:20px;letter-spacing:.08em;}
+  .y-tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px;}
+  .tag{font-size:11.5px;padding:2px 10px;border-radius:20px;letter-spacing:.1em;color:#f6efe0;background:var(--jade);font-weight:400;}
+  .tag.red{background:var(--cinnabar);}
+  .tag.gold{background:var(--gold);}
+  .tag.line{background:none;color:var(--cinnabar-dark);border:1px solid var(--line);}
+  .qar{margin:10px 0;}
+  .qar-row{display:flex;gap:10px;margin:9px 0;align-items:flex-start;}
+  .qar-k{flex:none;width:58px;font-size:12px;color:var(--cinnabar);letter-spacing:.18em;padding-top:2px;font-weight:700;}
+  .qar-v{flex:1;font-size:14.5px;color:var(--ink);line-height:1.9;}
+  .qar-v b{color:var(--cinnabar-dark);}
+  .star{font-size:12.5px;color:var(--ink-soft);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line-soft);}
+  .star b{color:var(--gold);}
+
+  table.mini{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:8px 10px;text-align:left;}
+  table.mini th{background:rgba(176,141,79,.12);color:var(--ink);font-weight:700;letter-spacing:.05em;white-space:nowrap;}
+  table.mini tr:nth-child(even){background:rgba(255,253,246,.5);}
+  table.mini td.hi{color:var(--cinnabar-dark);font-weight:700;}
+
+  .lead{font-size:14.5px;color:var(--ink-soft);margin-bottom:10px;}
+  .note{margin-top:14px;padding:11px 14px;border-radius:6px;font-size:13.5px;background:rgba(166,61,47,.06);
+    border-left:3px solid var(--cinnabar);color:var(--ink-soft);}
+  .note .nt{display:block;font-size:11px;color:var(--cinnabar);letter-spacing:.26em;margin-bottom:3px;font-weight:700;}
+  .verify{margin-top:12px;padding:13px 16px;border-radius:6px;font-size:14.5px;background:rgba(78,107,92,.09);
+    border-left:3px solid var(--jade);color:var(--ink);}
+  .verify .vt{display:block;font-size:11px;color:var(--jade);letter-spacing:.26em;margin-bottom:4px;font-weight:700;}
+  .sop{list-style:none;padding:0;margin:8px 0;}
+  .sop li{font-size:14.5px;color:var(--ink);margin:8px 0;padding-left:18px;position:relative;line-height:1.9;}
+  .sop li::before{content:"◆";position:absolute;left:0;top:2px;font-size:10px;color:var(--cinnabar);}
+  .sop li b{color:var(--cinnabar-dark);}
+  .footnote{margin-top:56px;padding-top:18px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink-soft);opacity:.85;letter-spacing:.04em;}
+  .footnote p{margin:5px 0;}
+  .backtop{position:fixed;right:20px;bottom:24px;width:46px;height:46px;z-index:50;
+    background:var(--cinnabar);color:#f6efe0;border:none;border-radius:6px;cursor:pointer;
+    font-family:inherit;font-size:15px;box-shadow:0 6px 16px rgba(166,61,47,.35);}
+  .backtop:hover{background:var(--cinnabar-dark);}
+  @media(max-width:720px){
+    .qar-k{width:48px;font-size:11px;}
+    .qar-v{font-size:14px;}
+    .chapter{padding:24px 16px;}
+    .ycard{padding:18px 14px;}
+    .wrap{padding:0 14px 120px;}
+    table.mini{font-size:12.5px;}
+    table.mini th,table.mini td{padding:6px 7px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="nav-brand">流年<span>运程</span>表</div>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-items').classList.toggle('open')">目录</button>
+    <div class="nav-items">
+      <div class="nav-item"><a class="nav-link" href="#cover">卷首</a></div>
+      <div class="nav-item">
+        <a class="nav-link has-sub" href="#ch-dayun">大运总览</a>
+        <div class="nav-sub">
+          <a href="#ch-dayun">四步大运</a>
+          <a href="#ch-mingju">命局根骨</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link has-sub" href="#y2026">逐年详批</a>
+        <div class="nav-sub">
+          <a href="#y2026">2026 丙午 · 火局成</a>
+          <a href="#y2027">2027 丁未 · 贵人动</a>
+          <a href="#y2028">2028 戊申 · 驿马出</a>
+          <a href="#y2029">2029 己酉 · 伤官旺</a>
+          <a href="#y2030">2030 庚戌 · 华盖临</a>
+          <a href="#y2031">2031 辛亥 · 转大运</a>
+          <a href="#y2032">2032-2033 收成</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link has-sub" href="#ch-month">流月节奏</a>
+        <div class="nav-sub">
+          <a href="#ch-month">2026 下半年逐月</a>
+          <a href="#ch-month27">2027 上半年</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="#ch-action">行动清单</a></div>
+      <div class="nav-item"><a class="nav-link" href="#ch-end">总断</a></div>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="cover" id="cover">
+    <h1 class="cover-title">流年运程表</h1>
+    <div class="cover-sub">二〇二六 · 癸卯命 戊土日主 · 至二〇三三</div>
+    <div class="cover-seal">戊戌<br>日主</div>
+    <div class="cover-sig">丁卯 · 壬寅 · 戊戌 · 乙卯　日主戊土　用神火土</div>
+  </header>
+
+  <!-- ===== 卷一 大运总览 ===== -->
+  <section class="chapter" id="ch-dayun">
+    <div class="ch-head">
+      <span class="ch-no">卷一</span>
+      <div>
+        <div class="ch-title">大运总览</div>
+        <div class="ch-en">FOUR DECADES</div>
+      </div>
+      <div class="ch-line"></div>
+    </div>
+    <p class="lead">看流年先看大运。大运是十年的"底调"，流年是每年的"天气"。你现在走的是戊戌大运（比肩帮身），2031年换丁酉大运（伤官配印）——人生最亮的十年。</p>
+    <table class="mini">
+      <tr><th>大运</th><th>年龄</th><th>年份</th><th>主题</th></tr>
+      <tr><td>己亥</td><td>25-34</td><td>2011-2020</td><td>财星透，奔波求财（策划、商业转型）</td></tr>
+      <tr><td class="hi">戊戌</td><td>35-44</td><td>2021-2030</td><td><b>比肩帮身，扎根专业、打基础</b>（现在）</td></tr>
+      <tr><td class="hi">丁酉</td><td>45-54</td><td>2031-2040</td><td><b>正印到位 + 伤官配印 —— 人生高光，学成立身</b></td></tr>
+      <tr><td>丙申</td><td>55-64</td><td>2041-2050</td><td>偏印主玄学、宗教、医学 —— 灵性丰收期</td></tr>
+    </table>
+    <div class="note">
+      <span class="nt">关键</span>
+      丁酉大运（2031起）是你命里"伤官配印"的十年——<b>伤官（内容、表达、作品）+ 印（学问、灵性、医道）</b>，才华有学问支撑，越老越值钱。你现在所有的积累，都是在为那十年铺路。
+    </div>
+  </section>
+
+  <!-- ===== 命局根骨 ===== -->
+  <section class="chapter" id="ch-mingju">
+    <div class="ch-head">
+      <span class="ch-no">根骨</span>
+      <div>
+        <div class="ch-title">命局根骨（解读流年的钥匙）</div>
+        <div class="ch-en">THE KEY</div>
+      </div>
+      <div class="ch-line"></div>
+    </div>
+    <table class="mini">
+      <tr><th>项目</th><th>内容</th><th>看流年时的作用</th></tr>
+      <tr><td>四柱</td><td>丁卯 壬寅 <b>戊戌</b> 乙卯</td><td>日主戊土，日支戌</td></tr>
+      <tr><td>月支</td><td>寅</td><td>与日支戌同属"寅午戌"火局 → 午年火局成</td></tr>
+      <tr><td>日主</td><td>戊土身弱，用神火土</td><td>火年帮身（好），水金年耗身（累）</td></tr>
+      <tr><td>格局</td><td>杀印相生（官杀重，丁火化杀）</td><td>压力年份能转成学问</td></tr>
+      <tr><td>五行</td><td>木极旺、火有根、土有根、<b>金极弱</b>、水弱</td><td>金=表达（食伤），最怕火多熔金</td></tr>
+      <tr><td>神煞基准</td><td>寅午戌局：驿马=申、华盖=戌、将星/羊刃=午、桃花=卯；天乙贵人=丑未</td><td>每年地支一查即知</td></tr>
+    </table>
+    <div class="verify">
+      <span class="vt">一句话读懂</span>
+      你的命最怕两件事：<b>火太多（输出被熔断——2026年就是）</b>；金水太少（身弱耗不起）。最受益的是<b>火土之年（帮身）+ 金之年（出口）</b>。
+    </div>
+  </section>
+
+  <!-- ===== 卷二 逐年详批 ===== -->
+  <section class="chapter" id="y2026">
+    <div class="ch-head">
+      <span class="ch-no">卷二</span>
+      <div>
+        <div class="ch-title">逐年详批 · 2026</div>
+        <div class="ch-en">YEAR BY YEAR</div>
+      </div>
+      <div class="ch-line"></div>
+    </div>
+
+    <div class="ycard hot">
+      <div class="y-head">
+        <span class="y-year">2026</span>
+        <span class="y-gz">丙午</span>
+        <span class="y-age">虚岁40 · 戊戌大运</span>
+      </div>
+      <div class="y-tags">
+        <span class="tag red">火局成局</span><span class="tag">偏印+正印</span>
+        <span class="tag gold">将星</span><span class="tag red">羊刃</span>
+        <span class="tag line">寅午戌三合火</span>
+      </div>
+      <div class="qar">
+        <div class="qar-row"><div class="qar-k">问题</div><div class="qar-v">一年当中最有"输入欲"却最动不起来、最不想产出的一年。</div></div>
+        <div class="qar-row"><div class="qar-k">原因</div><div class="qar-v">流年午到，<b>寅（月支）+ 戌（日支/大运）+ 午 = 三合火局成立</b>。火是印星（学习、信仰、吸收），火旺则<b>熔金</b>——金是你命里唯一的输出通道（食伤/表达）。印旺克食伤，所以<b>想得多、动不了、不想更新</b>。午又是羊刃（情绪起伏、易破财）+ 将星（掌控力）。</div></div>
+        <div class="qar-row"><div class="qar-k">接下来</div><div class="qar-v">今年是<b>"闭关输入年"，不是产出年</b>。别硬逼自己更新——<b>把刷剧/游戏的时间换成读经、学中医、看技术</b>（同样是输入，好料明年变素材）。真正的产出窗口在 8月末起到 9月（见流月）。</div></div>
+      </div>
+      <div class="star"><b>印证</b>：这几个月不想更新、刷短剧游戏、之前烂嘴角（火熔金伤及肺与口）——全是同一个结构在起作用。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="y2027">
+    <div class="ch-head"><span class="ch-no">卷二</span><div><div class="ch-title">逐年详批 · 2027</div><div class="ch-en">YEAR BY YEAR</div></div><div class="ch-line"></div></div>
+    <div class="ycard cool">
+      <div class="y-head"><span class="y-year">2027</span><span class="y-gz">丁未</span><span class="y-age">虚岁41 · 戊戌大运</span></div>
+      <div class="y-tags"><span class="tag gold">天乙贵人</span><span class="tag">正印+劫财</span><span class="tag red">未戌相刑</span><span class="tag line">卯未半合木</span></div>
+      <div class="qar">
+        <div class="qar-row"><div class="qar-k">问题</div><div class="qar-v">变动之年：搬家/换环境/换方向的可能性最大，但钱上要守。</div></div>
+        <div class="qar-row"><div class="qar-k">原因</div><div class="qar-v"><b>未 = 天乙贵人</b>（戊日贵人在丑未）——遇人扶、遇明师、遇机运。丁火正印透干——学问、灵性、文书、信仰之年。<b>未戌相刑</b>——动土、迁移、旧事重提、脾胃皮肤注意。<b>卯未半合木局</b>——官杀成局，压力/责任加码（迁居、转型、家庭）。天干劫财——分财之象。</div></div>
+        <div class="qar-row"><div class="qar-k">接下来</div><div class="qar-v"><b>这是"去云南"最可能落地的一年</b>（未=西南方，与你六爻蹇卦"利西南"和八字用神同指一方）。同时是<b>贵人年</b>——主动见人、找师、谈合作。但<b>劫财+相刑 → 守财第一</b>：不合伙、不借贷、大额支出谨慎，重要约定白纸黑字。</div></div>
+      </div>
+      <div class="star"><b>关键词</b>：贵人 · 变动 · 西南 · 守财</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="y2028">
+    <div class="ch-head"><span class="ch-no">卷二</span><div><div class="ch-title">逐年详批 · 2028</div><div class="ch-en">YEAR BY YEAR</div></div><div class="ch-line"></div></div>
+    <div class="ycard cool">
+      <div class="y-head"><span class="y-year">2028</span><span class="y-gz">戊申</span><span class="y-age">虚岁42 · 戊戌大运</span></div>
+      <div class="y-tags"><span class="tag gold">驿马</span><span class="tag gold">文昌</span><span class="tag">食神</span><span class="tag">比肩</span><span class="tag red">寅申冲</span></div>
+      <div class="qar">
+        <div class="qar-row"><div class="qar-k">问题</div><div class="qar-v">大动之年：出行、迁移、转向，同时是"输出通道全开"的一年。</div></div>
+        <div class="qar-row"><div class="qar-k">原因</div><div class="qar-v"><b>申 = 驿马 + 文昌 + 食神</b>，三张好牌同来：驿马=走动奔波、文昌=文书表达、食神=作品才华。比肩帮身=有底气、有人帮。但<b>寅申冲</b>（冲月支七杀）——动得大、变数多。</div></div>
+        <div class="qar-row"><div class="qar-k">接下来</div><div class="qar-v"><b>作品/内容开始成规模 + 迁移落地</b>。想动就动（驿马年不动反而不顺）；但比肩年防"合伙分利"，合作条款要清晰。这是<b>2026闭关成果第一次吐出来</b>的一年。</div></div>
+      </div>
+      <div class="star"><b>关键词</b>：驿马 · 文昌 · 出作品 · 迁移</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="y2029">
+    <div class="ch-head"><span class="ch-no">卷二</span><div><div class="ch-title">逐年详批 · 2029</div><div class="ch-en">YEAR BY YEAR</div></div><div class="ch-line"></div></div>
+    <div class="ycard">
+      <div class="y-head"><span class="y-year">2029</span><span class="y-gz">己酉</span><span class="y-age">虚岁43 · 戊戌大运</span></div>
+      <div class="y-tags"><span class="tag">伤官</span><span class="tag red">劫财</span><span class="tag red">卯酉冲</span><span class="tag red">酉戌相害</span></div>
+      <div class="qar">
+        <div class="qar-row"><div class="qar-k">问题</div><div class="qar-v">创作最旺的一年，同时是变动、口舌、破财风险并存的一年。</div></div>
+        <div class="qar-row"><div class="qar-k">原因</div><div class="qar-v"><b>酉 = 伤官得地</b>（金旺）——表达、创作、内容、才华的高峰，你命里最缺的金终于来了。<b>卯酉冲</b>（双卯冲酉）——官星被冲、身份/工作/行业变动，桃花冲（情感口舌）。<b>酉戌相害</b> ——亲密关系、伙伴关系易生嫌隙。天干劫财——分财、竞争。</div></div>
+        <div class="qar-row"><div class="qar-k">接下来</div><div class="qar-v"><b>在"输出"上狠狠用力</b>——这一年是你内容/作品的高产期，别浪费。<b>但钱上要稳</b>：合伙找白纸黑字、不垫资、不担保；关系上少说快话（伤官年最容易"嘴上得罪人"）。</div></div>
+      </div>
+      <div class="star"><b>关键词</b>：创作高峰 · 变动 · 管住嘴 · 守住钱</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="y2030">
+    <div class="ch-head"><span class="ch-no">卷二</span><div><div class="ch-title">逐年详批 · 2030</div><div class="ch-en">YEAR BY YEAR</div></div><div class="ch-line"></div></div>
+    <div class="ycard hot">
+      <div class="y-head"><span class="y-year">2030</span><span class="y-gz">庚戌</span><span class="y-age">虚岁44 · 戊戌大运末</span></div>
+      <div class="y-tags"><span class="tag gold">华盖</span><span class="tag">食神</span><span class="tag">比肩</span><span class="tag line">与日支伏吟</span></div>
+      <div class="qar">
+        <div class="qar-row"><div class="qar-k">问题</div><div class="qar-v">灵性/内容事业正式启动的一年，也是"旧事重提、反复"的一年。</div></div>
+        <div class="qar-row"><div class="qar-k">原因</div><div class="qar-v"><b>戌 = 华盖</b>——五术、灵性、宗教、出世之才，正是你财帛宫华盖的呼应。<b>庚金食神</b>——作品、技艺、专业输出。<b>与日支戌伏吟</b>——同支相叠，主"旧事重提、反复、心里绕不过去"。</div></div>
+        <div class="qar-row"><div class="qar-k">接下来</div><div class="qar-v"><b>灵性/医道/内容事业正式起盘</b>——这是你等了半生的信号（44岁，紫微华盖大限同时开始）。伏吟年会有旧人旧事回头，<b>该了的了、该断的断</b>，别拖进下个十年。</div></div>
+      </div>
+      <div class="star"><b>关键词</b>：华盖启动 · 灵性起盘 · 了结旧事</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="y2031">
+    <div class="ch-head"><span class="ch-no">卷二</span><div><div class="ch-title">逐年详批 · 2031</div><div class="ch-en">YEAR BY YEAR</div></div><div class="ch-line"></div></div>
+    <div class="ycard hot">
+      <div class="y-head"><span class="y-year">2031</span><span class="y-gz">辛亥</span><span class="y-age">虚岁45 · <b>转丁酉大运</b></span></div>
+      <div class="y-tags"><span class="tag red">换大运</span><span class="tag gold">伤官生财</span><span class="tag">偏财</span><span class="tag line">寅亥合木</span></div>
+      <div class="qar">
+        <div class="qar-row"><div class="qar-k">问题</div><div class="qar-v">十年大运交节之年——人生的"换挡点"，也是变现高光期的起点。</div></div>
+        <div class="qar-row"><div class="qar-k">原因</div><div class="qar-v"><b>45岁进丁酉大运</b>（正印 + 伤官）——伤官配印成格，才华有学问支撑。<b>辛金伤官 + 亥水偏财 = 伤官生财</b>——作品、内容、技艺直接变现。<b>寅亥合木</b>（合月支）——官杀得合，压力转为助力（也可能多一份责任）。</div></div>
+        <div class="qar-row"><div class="qar-k">接下来</div><div class="qar-v"><b>人生变现高光期的起点</b>：课程、内容、咨询、医道——作品即资产。这一年适合"换挡"：把身份从"接单的人"换成"出作品的人"。大运交接年本身波动大，<b>但方向是对的，顺势上</b>。</div></div>
+      </div>
+      <div class="star"><b>关键词</b>：换大运 · 伤官生财 · 作品即资产</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="y2032">
+    <div class="ch-head"><span class="ch-no">卷二</span><div><div class="ch-title">逐年详批 · 2032-2033</div><div class="ch-en">YEAR BY YEAR</div></div><div class="ch-line"></div></div>
+    <div class="ycard">
+      <div class="y-head"><span class="y-year">2032</span><span class="y-gz">壬子</span><span class="y-age">虚岁46 · 丁酉大运</span></div>
+      <div class="y-tags"><span class="tag">偏财+正财</span><span class="tag red">财旺耗身</span></div>
+      <div class="qar">
+        <div class="qar-row"><div class="qar-k">问题</div><div class="qar-v">财来得多，但身弱受财——赚得到，也要防"财多身弱、越忙越累"。</div></div>
+        <div class="qar-row"><div class="qar-k">原因</div><div class="qar-v">壬子全水=偏财+正财，财星大旺。你日主戊土身弱，<b>财旺则耗身</b>：机会多、进项多，但精力是瓶颈。</div></div>
+        <div class="qar-row"><div class="qar-k">接下来</div><div class="qar-v"><b>财旺年份重"守"不重"抢"</b>：把精力投在能复利的产品（课程、内容、IP）上，少接纯耗时间的活。同时注意身体（水旺克火，阳气弱）。</div></div>
+      </div>
+      <div class="star"><b>关键词</b>：财旺 · 重守 · 养身</div>
+    </div>
+    <div class="ycard" style="margin-top:14px;">
+      <div class="y-head"><span class="y-year">2033</span><span class="y-gz">癸丑</span><span class="y-age">虚岁47 · 丁酉大运</span></div>
+      <div class="y-tags"><span class="tag gold">天乙贵人</span><span class="tag">正财+劫财</span><span class="tag line">丑戌相刑</span></div>
+      <div class="qar">
+        <div class="qar-row"><div class="qar-k">问题</div><div class="qar-v">又一个贵人年，但"劫财 + 相刑"提醒：人来了，钱要分清。</div></div>
+        <div class="qar-row"><div class="qar-k">原因</div><div class="qar-v"><b>丑 = 天乙贵人</b>（戊日贵人在丑未）——贵人再现。<b>癸水正财 + 丑土劫财</b>——正财稳定，但劫财分利。<b>丑戌相刑</b>——关系、财务、旧账易生纠葛。</div></div>
+        <div class="qar-row"><div class="qar-k">接下来</div><div class="qar-v">借贵人年<b>谈长期合作、立规矩</b>；财务上把"分账"提前说清。此时你已在丁酉大运中段，作品与名气开始有复利。</div></div>
+      </div>
+      <div class="star"><b>关键词</b>：贵人 · 立规矩 · 复利开始</div>
+    </div>
+  </section>
+
+  <!-- ===== 卷三 流月 ===== -->
+  <section class="chapter" id="ch-month">
+    <div class="ch-head"><span class="ch-no">卷三</span><div><div class="ch-title">流月节奏 · 2026 下半年</div><div class="ch-en">MONTH BY MONTH</div></div><div class="ch-line"></div></div>
+    <p class="lead">今年的转折点就在眼前：<b>丙申月（8/8 起）</b>。申金一到，被火熔断的"输出通道"重新打开。</p>
+    <table class="mini">
+      <tr><th>流月</th><th>时间</th><th>十神</th><th>该做什么</th></tr>
+      <tr><td class="hi">丙申</td><td>8/8-9/7</td><td>偏印+<b>食神</b>（驿马·文昌）</td><td><b>重启</b>：先发1条，别求完美；可安排出行考察</td></tr>
+      <tr><td class="hi">丁酉</td><td>9/8-10/8</td><td>正印+<b>伤官</b></td><td><b>全年创作黄金月</b>（伤官配印）——发力输出</td></tr>
+      <tr><td>戊戌</td><td>10/9-11/7</td><td>比肩+比肩</td><td>定方向、做计划、把目标钉下来</td></tr>
+      <tr><td>己亥</td><td>11/8-12/6</td><td>劫财+偏财</td><td><b>守财月</b>：不投资、不合伙、缓大额支出</td></tr>
+      <tr><td>庚子</td><td>12/7-1/5</td><td>食神+正财</td><td>收成：结款、变现、把活收尾</td></tr>
+    </table>
+    <div class="note">
+      <span class="nt">为什么现在能重启</span>
+      申金 = 食神（输出） + 文昌（文思） + 驿马（走动），且<b>寅申冲</b>冲开月支七杀——压力松动、行动力恢复。<b>8月下半月到9月，是这一年"金气"最强的窗口。</b>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-month27">
+    <div class="ch-head"><span class="ch-no">卷三</span><div><div class="ch-title">流月节奏 · 2027 上半年</div><div class="ch-en">MONTH BY MONTH</div></div><div class="ch-line"></div></div>
+    <table class="mini">
+      <tr><th>流月</th><th>时间</th><th>十神</th><th>提示</th></tr>
+      <tr><td>辛丑</td><td>1/6-2/3</td><td>伤官+<b>天乙贵人</b></td><td>贵人+表达：谈合作、见人、起新项目</td></tr>
+      <tr><td>壬寅</td><td>2/4-3/4</td><td>偏财+七杀</td><td>压力与机会同来，财务谨慎</td></tr>
+      <tr><td>癸卯</td><td>3/5-4/4</td><td>正财+正官</td><td>正职/正事推进，踏实做事</td></tr>
+      <tr><td>甲辰</td><td>4/5-5/4</td><td>七杀+比肩</td><td>压力大但有帮手，主意自己拿</td></tr>
+      <tr><td>乙巳</td><td>5/5-6/4</td><td>正官+偏印</td><td>文书、学习、谋定后动</td></tr>
+      <tr><td>丙午</td><td>6/5-7/5</td><td>偏印+正印</td><td>又逢火旺：休息、学习，别硬拼</td></tr>
+    </table>
+    <div class="verify">
+      <span class="vt">2027 动作要点</span>
+      上半年以<b>1-2月（辛丑月·天乙贵人）</b>为"见人谈事"的关键窗口；夏天（丙午月）火旺，反而是休整、学习、蓄力的时段——<b>别在火旺的月份硬逼自己的产出</b>。
+    </div>
+  </section>
+
+  <!-- ===== 卷四 行动清单 ===== -->
+  <section class="chapter" id="ch-action">
+    <div class="ch-head"><span class="ch-no">卷四</span><div><div class="ch-title">行动清单 · 照着做</div><div class="ch-en">ACTION LIST</div></div><div class="ch-line"></div></div>
+    <ul class="sop">
+      <li><b>今年（2026）不要逼自己大产出</b>——这是"输入年"。把刷剧、游戏的时间换成：读经、学中医、看AI技术。同样是输入，好料明年变素材。</li>
+      <li><b>8月末-9月：重启自媒体</b>——先发一条（不求完美、不做教程类以避免导流），9月丁酉月全力输出。</li>
+      <li><b>10月（戊戌月）：定方向</b>——把明年的目标写下来钉在墙上；同时是去云南考察的最佳月份。</li>
+      <li><b>11月（己亥月）：守财</b>——不投资、不合伙、不垫资，大额支出缓一缓。这个月"少动钱"就是赚钱。</li>
+      <li><b>2027（丁未·贵人年）：去云南 + 见贵人 + 守财</b>——未=西南，最可能落地的一年；但劫财+相刑，重要约定白纸黑字。</li>
+      <li><b>2028（戊申·驿马年）：出作品 + 迁移落地</b>——驿马年该动就动，把这几年输入的东西吐出来。</li>
+      <li><b>2029（己酉·伤官年）：创作高峰</b>——全力输出内容，同时管住嘴（伤官年易口舌）、守住钱（劫财年）。</li>
+      <li><b>2030-2031（庚戌·辛亥）：换大运</b>——灵性/医道/内容事业起盘，身份从"接单"转"出作品"。</li>
+    </ul>
+    <div class="note">
+      <span class="nt">一句话总纲</span>
+      <b>2026 闭关输入 → 2027 贵人变动（西南）→ 2028 驿马出作品 → 2029 创作高峰 → 2030 华盖起盘 → 2031 换大运、伤官生财。</b>
+    </div>
+  </section>
+
+  <!-- ===== 总断 ===== -->
+  <section class="chapter" id="ch-end">
+    <div class="ch-head"><span class="ch-no">总断</span><div><div class="ch-title">一句话</div><div class="ch-en">THE LONG AND SHORT</div></div><div class="ch-line"></div></div>
+    <div class="verify">
+      <span class="vt">你要记住的</span>
+      你不是掉队了——<b>你是被 2026 年的火按住了</b>。这一年老天给你的功课不是"产出"，是"吸收"。<br><br>
+      认了这个功课，就顺了：把这一年当"闭关年"，读你想读的、学你想学的。<b>等到 2028 年申金一到，你会发现——这一年输入的东西，全变成了一口气能吐出来的作品。</b><br><br>
+      而 2031 年（45岁，丁酉大运），才是你真正开始"开花"的时候。
+    </div>
+  </section>
+
+  <div class="footnote">
+    <p>排盘依据：公历 1987-02-18 卯时（内蒙古额尔古纳）· 农历正月廿一 · 八字 丁卯 壬寅 戊戌 乙卯 · 日主戊土（身弱，用神火土）</p>
+    <p>计算工具：lunar-python（节气换年、流年流月干支、十神）；大运划分依起运岁数推得。</p>
+    <p>神煞基准：寅午戌局 —— 驿马=申、华盖=戌、将星/羊刃=午、桃花=卯；戊日天乙贵人=丑、未；戊日文昌=申。</p>
+    <p>本表为命理推演记录，供自省参用，非宿命论断。</p>
+  </div>
+
+</div>
+
+<button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">回顶</button>
+
+<script>
+  // 移动端子菜单点击展开
+  document.querySelectorAll('.nav-item > .nav-link.has-sub').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(window.innerWidth <= 720){
+        e.preventDefault();
+        a.parentElement.classList.toggle('open');
+      }
+    });
+  });
+  // 移动端点击子菜单后收起菜单
+  document.querySelectorAll('.nav-sub a').forEach(function(a){
+    a.addEventListener('click', function(){
+      if(window.innerWidth <= 720){
+        document.querySelector('.nav-items').classList.remove('open');
+        document.querySelectorAll('.nav-item').forEach(function(it){ it.classList.remove('open'); });
+      }
+    });
+  });
+</script>
+</body>
+</html>
