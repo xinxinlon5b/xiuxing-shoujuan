@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>流 年 逐 月 详 解 · 王昕</title>
+<style>
+  :root{--paper:#f6efe0;--ink:#2e2922;--ink-soft:#5a5144;--cinnabar:#a63d2f;--cinnabar-dark:#8c3226;
+    --jade:#4e6b5c;--gold:#b08d4f;--line:#d9cbb0;--line-soft:#e6dcc4;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Kaiti SC","STKaiti","KaiTi","BiauKai","FangSong","STFangsong","Songti SC","STSong","SimSun",serif;
+    background:var(--paper);color:var(--ink);line-height:1.95;letter-spacing:.03em;-webkit-font-smoothing:antialiased;}
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:radial-gradient(ellipse 90% 60% at 50% -10%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(ellipse 70% 45% at 85% 110%, rgba(176,141,79,.10), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 8% 90%, rgba(78,107,92,.08), transparent 60%);}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px 140px;}
+  .topnav{position:sticky;top:0;z-index:200;background:rgba(246,239,224,.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);box-shadow:0 2px 12px rgba(120,100,60,.10);}
+  .topnav-inner{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:3px;padding:8px 14px;flex-wrap:wrap;}
+  .nav-brand{font-size:15px;font-weight:700;letter-spacing:.12em;color:var(--cinnabar-dark);margin-right:12px;white-space:nowrap;}
+  .nav-brand span{color:var(--gold);}
+  .nav-toggle{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);
+    font-family:inherit;font-size:14px;padding:6px 12px;border-radius:5px;cursor:pointer;}
+  .nav-item{position:relative;}
+  .nav-link{display:block;padding:8px 11px;font-size:13.5px;color:var(--ink);text-decoration:none;
+    letter-spacing:.06em;border-radius:5px;transition:all .3s;white-space:nowrap;}
+  .nav-link:hover{background:rgba(166,61,47,.10);color:var(--cinnabar-dark);}
+  .nav-link.has-sub::after{content:"\25BE";margin-left:4px;font-size:10px;color:var(--cinnabar);}
+  .nav-item:hover .nav-sub{display:block;}
+  .nav-sub{display:none;position:absolute;top:100%;left:0;min-width:225px;z-index:300;
+    background:rgba(250,245,233,.98);border:1px solid var(--line);border-radius:6px;
+    box-shadow:0 8px 22px rgba(90,70,40,.14);padding:6px;margin-top:2px;}
+  .nav-sub a{display:block;padding:8px 13px;font-size:12.8px;color:var(--ink-soft);text-decoration:none;
+    border-radius:4px;transition:all .2s;border-bottom:1px dashed var(--line-soft);}
+  .nav-sub a:last-child{border-bottom:none;}
+  .nav-sub a:hover{background:rgba(166,61,47,.08);color:var(--cinnabar-dark);}
+  @media(max-width:760px){
+    .nav-toggle{display:block;}
+    .nav-items{display:none;width:100%;flex-direction:column;padding:6px 0;}
+    .nav-items.open{display:flex;}
+    .nav-item{width:100%;}
+    .nav-sub{position:static;display:none;box-shadow:none;border:none;padding-left:16px;min-width:0;}
+    .nav-item.open .nav-sub{display:block;}
+    .nav-link.has-sub::after{content:"\25B8";}
+    .nav-item.open .nav-link.has-sub::after{content:"\25BE";}
+  }
+  .cover{min-height:86vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    position:relative;padding:70px 20px 50px;text-align:center;}
+  .cover::before{content:"";position:absolute;left:50%;top:8%;transform:translateX(-50%);
+    width:70%;height:70%;opacity:.5;pointer-events:none;
+    background:radial-gradient(ellipse at center, rgba(255,255,255,.6), transparent 70%);}
+  .cover-title{writing-mode:vertical-rl;font-size:clamp(36px,7.5vw,64px);font-weight:700;
+    letter-spacing:.28em;color:var(--ink);line-height:1.2;text-shadow:2px 3px 6px rgba(90,70,40,.12);animation:fadeIn 1.6s ease both;}
+  .cover-sub{margin-top:32px;font-size:clamp(12px,2.4vw,16px);color:var(--ink-soft);letter-spacing:.4em;animation:fadeIn 2s .3s ease both;}
+  .cover-seal{margin-top:28px;width:58px;height:58px;border:2px solid var(--cinnabar);color:var(--cinnabar);
+    display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.1em;transform:rotate(-4deg);
+    border-radius:6px;animation:fadeIn 2.2s .5s ease both;text-align:center;line-height:1.3;}
+  .cover-sig{margin-top:18px;font-size:12px;color:var(--ink-soft);letter-spacing:.28em;animation:fadeIn 2.2s .6s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  .chapter{background:linear-gradient(180deg, rgba(255,253,246,.72), rgba(248,241,225,.5));
+    border:1px solid var(--line-soft);border-radius:10px;padding:30px 26px 26px;margin:30px 0;
+    box-shadow:0 4px 18px rgba(120,100,60,.06);}
+  .ch-head{display:flex;align-items:center;gap:13px;margin-bottom:18px;}
+  .ch-no{flex:none;font-size:12.5px;color:var(--cinnabar);border:1px solid var(--cinnabar);border-radius:4px;padding:4px 9px;letter-spacing:.18em;}
+  .ch-title{font-size:20px;font-weight:700;letter-spacing:.08em;}
+  .ch-en{font-size:10px;color:var(--gold);letter-spacing:.24em;margin-top:3px;}
+  .ch-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);}
+  .lead{font-size:14.5px;color:var(--ink-soft);margin-bottom:12px;}
+  .mcard{background:rgba(255,253,246,.62);border:1px solid var(--line-soft);border-radius:8px;
+    padding:20px 18px 16px;margin:16px 0;position:relative;overflow:hidden;}
+  .mcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--jade);opacity:.6;}
+  .mcard.slim{padding:14px 16px 12px;margin:10px 0;}
+  .mc-head{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;margin-bottom:6px;}
+  .mc-ym{font-size:19px;font-weight:700;letter-spacing:.04em;}
+  .mc-gz{font-size:16px;color:var(--cinnabar-dark);letter-spacing:.12em;font-weight:700;}
+  .mc-jq{font-size:11.5px;color:var(--ink-soft);background:rgba(176,141,79,.14);padding:2px 8px;border-radius:20px;}
+  .mc-tags{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0 11px;align-items:center;}
+  .tag{font-size:11.5px;padding:2px 10px;border-radius:20px;letter-spacing:.06em;color:#f6efe0;background:var(--jade);font-weight:400;}
+  .tag.red{background:#8c3226;}
+  .tag.gold{background:var(--gold);}
+  .tag.line{background:none;color:var(--cinnabar-dark);border:1px solid var(--line);}
+  .tag-s{font-size:11.5px;color:var(--ink-soft);border:1px dashed var(--line);padding:1px 9px;border-radius:20px;}
+  .row{display:flex;gap:10px;margin:8px 0;align-items:flex-start;}
+  .row .k{flex:none;width:62px;font-size:12px;letter-spacing:.12em;color:var(--jade);padding-top:3px;font-weight:700;}
+  .row.do .k{color:var(--cinnabar);}
+  .row.no .k{color:#8c3226;}
+  .row .v{flex:1;font-size:14.5px;line-height:1.9;}
+  .row.no .v{color:var(--ink-soft);}
+  .why{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line-soft);font-size:12.8px;color:var(--ink-soft);line-height:1.85;}
+  table.mini{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:8px 9px;text-align:left;}
+  table.mini th{background:rgba(176,141,79,.13);font-weight:700;letter-spacing:.04em;white-space:nowrap;}
+  table.mini tr:nth-child(even){background:rgba(255,253,246,.5);}
+  table.mini tr.hl{background:rgba(166,61,47,.07);}
+  table.mini tr.hl td{font-weight:700;color:var(--cinnabar-dark);}
+  .note{margin-top:14px;padding:11px 14px;border-radius:6px;font-size:13.5px;background:rgba(166,61,47,.06);
+    border-left:3px solid var(--cinnabar);color:var(--ink-soft);line-height:1.9;}
+  .note .nt{display:block;font-size:11px;color:var(--cinnabar);letter-spacing:.24em;margin-bottom:3px;font-weight:700;}
+  .verify{margin-top:12px;padding:13px 16px;border-radius:6px;font-size:14.5px;background:rgba(78,107,92,.09);
+    border-left:3px solid var(--jade);line-height:1.95;}
+  .verify .vt{display:block;font-size:11px;color:var(--jade);letter-spacing:.24em;margin-bottom:4px;font-weight:700;}
+  .sop{list-style:none;padding:0;margin:8px 0;}
+  .sop li{font-size:14.5px;margin:9px 0;padding-left:18px;position:relative;line-height:1.9;}
+  .sop li::before{content:"\25C6";position:absolute;left:0;top:2px;font-size:10px;color:var(--cinnabar);}
+  .sop li b{color:var(--cinnabar-dark);}
+  .footnote{margin-top:52px;padding-top:18px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink-soft);opacity:.85;}
+  .footnote p{margin:5px 0;}
+  .backtop{position:fixed;right:20px;bottom:24px;width:46px;height:46px;z-index:50;
+    background:var(--cinnabar);color:#f6efe0;border:none;border-radius:6px;cursor:pointer;
+    font-family:inherit;font-size:15px;box-shadow:0 6px 16px rgba(166,61,47,.35);}
+  .backtop:hover{background:var(--cinnabar-dark);}
+  @media(max-width:760px){
+    .chapter{padding:22px 15px;}
+    .wrap{padding:0 13px 120px;}
+    .row .k{width:52px;font-size:11px;}
+    .row .v{font-size:14px;}
+    table.mini{font-size:12.3px;}
+    table.mini th,table.mini td{padding:6px 6px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="nav-brand">流年<span>逐月</span></div>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-items').classList.toggle('open')">目录</button>
+    <div class="nav-items">
+      <div class="nav-item"><a class="nav-link" href="#cover">卷首</a></div>
+      <div class="nav-item"><a class="nav-link" href="#ch-rule">月度规律</a></div>
+      <div class="nav-item">
+        <a class="nav-link has-sub" href="#ch-2026">2026 下半年</a>
+        <div class="nav-sub">
+          <a href="#m2609">2026年9月 丁酉</a>
+          <a href="#m2610">2026年10月 戊戌</a>
+          <a href="#m2611">2026年11月 己亥</a>
+          <a href="#m2612">2026年12月 庚子</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link has-sub" href="#ch-2027">2027 全年</a>
+        <div class="nav-sub">
+          <a href="#m2701">1月 辛丑 · 贵人月</a>
+          <a href="#m2702">2月 壬寅 · 压力月</a>
+          <a href="#m2703">3月 癸卯 · 正事月</a>
+          <a href="#m2704">4月 甲辰 · 变动月</a>
+          <a href="#m2705">5月 乙巳 · 得位月</a>
+          <a href="#m2706">6月 丙午 · 低谷月</a>
+          <a href="#m2707">7月 丁未 · 云南月</a>
+          <a href="#m2708">8月 戊申 · 出门月</a>
+          <a href="#m2709">9月 己酉 · 发力月</a>
+          <a href="#m2710">10月 庚戌 · 华盖月</a>
+          <a href="#m2711">11月 辛亥 · 变现月</a>
+          <a href="#m2712">12月 壬子 · 收成月</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="#ch-2028">2028</a></div>
+      <div class="nav-item"><a class="nav-link" href="#ch-2931">2029-31</a></div>
+      <div class="nav-item"><a class="nav-link" href="#ch-taboo">记住几条</a></div>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="cover" id="cover">
+    <h1 class="cover-title">流年逐月详解</h1>
+    <div class="cover-sub">二〇二六 · 秋 — 二〇三一 · 每月一行</div>
+    <div class="cover-seal">戊土<br>身弱</div>
+    <div class="cover-sig">用神火土 · 火旺则懒 · 金旺则产 · 未丑则遇贵人</div>
+  </header>
+
+  <section class="chapter" id="ch-rule">
+    <div class="ch-head"><span class="ch-no">卷一</span><div><div class="ch-title">先记住这张表：每个月是「什么角色」</div><div class="ch-en">THE MONTHLY PATTERN</div></div><div class="ch-line"></div></div>
+    <p class="lead">这是整篇最有用的东西，<b>每年都一样</b>，不用算命你自己也能预判。</p>
+    <table class="mini">
+      <tr><th>月份</th><th>地支</th><th>角色</th><th>大白话</th><th>该怎么用</th></tr>
+      <tr><td><b>2月</b></td><td>寅</td><td><b>压力月</b></td><td>事最多、压力最大，容易喘不上气</td><td>稳住基本盘，别做重大决定</td></tr><tr><td><b>3月</b></td><td>卯</td><td><b>人缘月</b></td><td>正经事顺、人讨喜、桃花旺</td><td>踏实做正事、多露面</td></tr><tr><td><b>4月</b></td><td>辰</td><td><b>变动月</b></td><td>辰冲戌——搬、换、调整，事情推着你走</td><td>该动就动，别硬稳住</td></tr><tr><td><b>5月</b></td><td>巳</td><td><b>得位月</b></td><td>禄神当值，得财得位、事情落地</td><td>谈正事、拿位置</td></tr><tr><td><b>6月</b></td><td>午</td><td><b>低谷月</b></td><td>火最旺——人最懒，只想躺着刷手机</td><td>修整、读书，别硬逼产出</td></tr><tr class="hl"><td><b>7月</b></td><td>未</td><td><b>⭐黄金月</b></td><td>天乙贵人加西南方——贵人月，往西南最顺</td><td>去云南、见人、推进落地</td></tr><tr><td><b>8月</b></td><td>申</td><td><b>出门月</b></td><td>驿马加文昌——出门顺、出作品顺</td><td>出门、拍、写、发，别宅</td></tr><tr class="hl"><td><b>9月</b></td><td>酉</td><td><b>⭐发力月</b></td><td>伤官得地——脑子最好使、最想干</td><td>猛干、猛输出，全年最高产</td></tr><tr><td><b>10月</b></td><td>戌</td><td><b>华盖月</b></td><td>想安静、想修行、想一个人待着</td><td>闭关、写作、做灵性内容</td></tr><tr><td><b>11月</b></td><td>亥</td><td><b>变现月</b></td><td>伤官生财——作品能换成钱</td><td>接单、卖课、推产品</td></tr><tr><td><b>12月</b></td><td>子</td><td><b>收成月</b></td><td>食神生财——收钱、收尾</td><td>结款、交付、算账</td></tr><tr><td><b>1月</b></td><td>丑</td><td><b>贵人月</b></td><td>天乙贵人当值——有人扶、遇明师</td><td>见人、谈事、起新项目</td></tr>
+    </table>
+    <div class="verify">
+      <span class="vt">一句话记住</span>
+      <b>6月最懒（火旺）、8月和9月最能干（金旺）、7月最容易遇到贵人（也是往西南走最顺的月）、11月最容易破财（劫财）、4月是变动月。</b>
+    </div>
+    <div class="note">
+      <span class="nt">为什么</span>
+      你日主是戊土，八字里<b>火太多、金太少</b>。火＝输入（学习、想法、吸收），金＝输出（表达、作品、动手）。所以<b>火旺的月份（6月最明显）你只想吸收不想动；金旺的月份（8月9月）你手痒、想干活、出东西</b>。这不是你懒，是月份的属性。
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-2026">
+    <div class="ch-head"><span class="ch-no">卷二</span><div><div class="ch-title">2026年 · 下半年逐月</div><div class="ch-en">SEP — DEC 2026</div></div><div class="ch-line"></div></div>
+    <p class="lead">2026整年是「火旺输入年」（寅午戌三合火局），所以这一年你不想干活是正常的。<b>但从9月开始转</b>——下半年这四个月，是全年最能出成绩的窗口。</p>
+    <div id="m2609"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2026年9月</span><span class="mc-gz">丁酉</span><span class="mc-jq">9月7日 白露起</span></div>
+      <div class="mc-tags"><span class="tag ">创作黄金月</span><span class="tag ">伤官配印</span><span class="tag ">变动</span><span class="tag-s">正印 + 伤官</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">整年脑子最好使、最想说、最想动手的一个月。憋了一年的劲会自己往上冒。这是你今年的「该发力」月。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">猛干。定选题、拍、写、发——一周2到3条不嫌多。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">话别说太直（这月容易嘴上得罪人）；别签长期合同、别承诺太久的事。</span></div>
+      <div class="why">为什么：丁火正印（学问）+ 酉金伤官（表达），伤官配印＝才华有学问托着；但卯酉冲、酉害戌，冲的是身份与关系，说话容易擦枪走火。</div>
+    </div>
+    <div id="m2610"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2026年10月</span><span class="mc-gz">戊戌</span><span class="mc-jq">10月8日 寒露起</span></div>
+      <div class="mc-tags"><span class="tag ">定方向月</span><span class="tag ">华盖月</span><span class="tag ">伏吟</span><span class="tag-s">比肩 + 比肩</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">有力气、有主见、看得清。脑子从「上头」回到「稳」，是拍板的时候。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">定方向。把明年的目标写下来钉在墙上；见同行、见同修。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别被旧人旧事拖回去（伏吟月，老问题会回头找你）。</span></div>
+      <div class="why">为什么：戊戌与你的日柱一模一样（叫伏吟）＝自己帮自己，主见最强；戌又是你的华盖星，适合静下来想事、做长线规划。</div>
+    </div>
+    <div id="m2611"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2026年11月</span><span class="mc-gz">己亥</span><span class="mc-jq">11月7日 立冬起</span></div>
+      <div class="mc-tags"><span class="tag red">守财月</span><span class="tag red">别动钱</span><span class="tag ">压力</span><span class="tag-s">劫财 + 偏财</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">钱容易出去、人容易来借、心容易软。全年最该捂紧口袋的一个月。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">守。收尾款、停大额支出、账目盘一遍。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别合伙、别投钱、别借钱给人、别冲动买大件。这个月少动钱＝赚钱。</span></div>
+      <div class="why">为什么：己土劫财＝分你钱的人；亥水偏财＝钱在流动。再加上寅亥合木（合出官杀）＝压力也一起上来。</div>
+    </div>
+    <div id="m2612"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2026年12月</span><span class="mc-gz">庚子</span><span class="mc-jq">12月7日 大雪起</span></div>
+      <div class="mc-tags"><span class="tag line">收成月</span><span class="tag line">结款</span><span class="tag-s">食神 + 正财</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">手痒想做事，也能把钱收回来。一年里把东西换成钱的时候。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">收成。结款、交付、把今年的活全部收口。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别为小事跟人磨（子卯刑，容易起没必要的摩擦）。</span></div>
+      <div class="why">为什么：庚金食神（作品与技能）+ 子水正财＝食神生财，你的手艺直接换成钱。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-2027">
+    <div class="ch-head"><span class="ch-no">卷三</span><div><div class="ch-title">2027年 · 丁未年 全年逐月</div><div class="ch-en">ALL 12 MONTHS · 2027</div></div><div class="ch-line"></div></div>
+    <p class="lead">2027是<b>天乙贵人年</b>（遇人扶、遇明师），地支「未」又在西南方——所以你问的「哪一年去云南」，<b>答案就是2027年7月（丁未月，贵人加西南双叠）</b>。</p>
+    <div id="m2701"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年1月</span><span class="mc-gz">辛丑</span><span class="mc-jq">1月5日 小寒起</span></div>
+      <div class="mc-tags"><span class="tag gold">贵人月</span><span class="tag ">人来了</span><span class="tag-s">伤官 + 劫财</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">有人扶你，但你自己心里折腾。想表达、想动，又有点乱。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">见贵人、谈事、起新项目。全年找人最好的窗口。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别自己跟自己较劲、别熬夜（丑刑戌，先伤身体）。</span></div>
+      <div class="why">为什么：丑＝你的天乙贵人（戊日贵人在丑未），意思是遇人扶、遇明师。但丑戌相刑，刑到日支，等于自己折腾自己。</div>
+    </div>
+    <div id="m2702"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年2月</span><span class="mc-gz">壬寅</span><span class="mc-jq">2月4日 立春起</span></div>
+      <div class="mc-tags"><span class="tag red">压力月</span><span class="tag red">事最多</span><span class="tag-s">偏财 + 七杀</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">一年开头压力最大、事最多的一个月。有点喘不上气是正常的。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">稳住基本盘，把该做的做了，别贪新。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别在这月做重大决定（压力下拍板，事后容易后悔）。</span></div>
+      <div class="why">为什么：壬水偏财（机会与钱）+ 寅木七杀（压力与责任），财杀同来；而且寅正是你的月支，压力叠加。</div>
+    </div>
+    <div id="m2703"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年3月</span><span class="mc-gz">癸卯</span><span class="mc-jq">3月6日 惊蛰起</span></div>
+      <div class="mc-tags"><span class="tag line">正事月</span><span class="tag gold">人缘好</span><span class="tag gold">桃花</span><span class="tag-s">正财 + 正官</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">正经事、正经路子最顺，人也变得讨喜、有人缘。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">踏实做正事、谈正经合作、多露面见人。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别贪偏门、别想走捷径。</span></div>
+      <div class="why">为什么：癸水正财（正当收入）+ 卯木正官（名分与职位）＝正财正官，走正道最顺；卯又是你的桃花星，人缘好。</div>
+    </div>
+    <div id="m2704"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年4月</span><span class="mc-gz">甲辰</span><span class="mc-jq">4月5日 清明起</span></div>
+      <div class="mc-tags"><span class="tag line">变动月</span><span class="tag line">该动就动</span><span class="tag-s">七杀 + 比肩</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">变动月——搬家、换地方、换安排，事情会推着你走。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">该动就动。这个月动是顺的，别硬稳住不动。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别硬扛（七杀月压力大）；身体先顾，别熬夜。</span></div>
+      <div class="why">为什么：辰冲戌＝冲你的日支，主搬迁、变动、环境换；甲木七杀＝压力，但辰里有戊土比肩＝有帮手撑着。</div>
+    </div>
+    <div id="m2705"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年5月</span><span class="mc-gz">乙巳</span><span class="mc-jq">5月6日 立夏起</span></div>
+      <div class="mc-tags"><span class="tag ">得位月</span><span class="tag ">禄神</span><span class="tag-s">正官 + 偏印</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">得位、得财的一个月，事情落地顺畅；就是心里偶尔绕圈。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">谈正事、拿位置、接正经活。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别在细节上钻牛角尖（偏印月容易想太多）。</span></div>
+      <div class="why">为什么：巳＝你的禄神（戊禄在巳），主俸禄、得财得位。乙木正官＝名分。</div>
+    </div>
+    <div id="m2706"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年6月</span><span class="mc-gz">丙午</span><span class="mc-jq">6月6日 芒种起</span></div>
+      <div class="mc-tags"><span class="tag red">火最旺</span><span class="tag red">低谷月</span><span class="tag red">别硬拼</span><span class="tag-s">偏印 + 正印</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">跟2026年一个味道——火最旺，人最懒，只想躺着输入。一动就烦。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">修整、读书、学东西、养身体。别自责。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别硬逼自己产出（火旺月产出效率最低）；防上火（这月最容易烂嘴角、失眠）。</span></div>
+      <div class="why">为什么：丙午＝火最旺的一个月，又叠上你自己的寅午戌火局，印星（输入）压住食伤（输出）＝想学不想干。</div>
+    </div>
+    <div id="m2707"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年7月</span><span class="mc-gz">丁未</span><span class="mc-jq">7月7日 小暑起</span></div>
+      <div class="mc-tags"><span class="tag gold">⭐去云南最顺</span><span class="tag gold">贵人月</span><span class="tag gold">西南月</span><span class="tag-s">正印 + 劫财</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">贵人月加西南月——一年里往西南走最顺的一个月。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">⭐去云南。就这个月。见人、考察、把落地的事往前推。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别大手大脚花钱（劫财月）；别拖——这月不做，就要等明年。</span></div>
+      <div class="why">为什么：未＝天乙贵人（戊日贵人在丑未），且未在西南方，正是六爻「利西南」和八字用神（火土）指的方位。三盘同时指向这个月。</div>
+    </div>
+    <div id="m2708"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年8月</span><span class="mc-gz">戊申</span><span class="mc-jq">8月8日 立秋起</span></div>
+      <div class="mc-tags"><span class="tag ">出门月</span><span class="tag ">驿马</span><span class="tag ">出作品</span><span class="tag-s">比肩 + 食神</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">腿要动、手要动——出门顺、出作品顺、换环境也顺。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">出门、拍、写、发。驿马月别宅着。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别宅（驿马月不动，反而不顺）。</span></div>
+      <div class="why">为什么：申＝驿马（走动）+ 文昌（文思）+ 食神（作品），三张好牌同来；寅申冲＝冲开压力。</div>
+    </div>
+    <div id="m2709"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年9月</span><span class="mc-gz">己酉</span><span class="mc-jq">9月8日 白露起</span></div>
+      <div class="mc-tags"><span class="tag ">创作高峰</span><span class="tag red">管住嘴</span><span class="tag red">守住钱</span><span class="tag-s">劫财 + 伤官</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">又到创作高峰月，但变动、口舌、破财的风险也一起来。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">狠狠输出——这是你2027年最该产出的一个月。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别乱投资、别垫钱、别跟人吵架（伤官年最容易嘴上得罪人）。</span></div>
+      <div class="why">为什么：酉金伤官得力（表达与内容），但天干己土劫财（分财），且卯酉冲、酉害戌，人际容易生嫌隙。</div>
+    </div>
+    <div id="m2710"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年10月</span><span class="mc-gz">庚戌</span><span class="mc-jq">10月8日 寒露起</span></div>
+      <div class="mc-tags"><span class="tag ">华盖月</span><span class="tag ">静心</span><span class="tag ">出作品</span><span class="tag-s">食神 + 比肩</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">华盖月——想安静、想修行、想一个人待着；同时手上又有活要交。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">出作品、闭关写作、做灵性内容、一个人待几天。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别被旧事、旧人牵住（伏吟）。</span></div>
+      <div class="why">为什么：戌＝你的华盖星（五术、灵性、出世之才），庚金食神＝作品与技艺，正是灵性与作品同来的月份。</div>
+    </div>
+    <div id="m2711"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年11月</span><span class="mc-gz">辛亥</span><span class="mc-jq">11月7日 立冬起</span></div>
+      <div class="mc-tags"><span class="tag ">变现月</span><span class="tag ">伤官生财</span><span class="tag-s">伤官 + 偏财</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">写出来的东西、做出来的内容，能换成钱。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">变现：接单、卖课、推产品、把内容挂上钩子。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别把摊子铺太大（一个人扛不住）。</span></div>
+      <div class="why">为什么：辛金伤官（作品与表达）+ 亥水偏财（钱）＝伤官生财，作品直接变现的组合。</div>
+    </div>
+    <div id="m2712"></div>
+    <div class="mcard">
+      <div class="mc-head"><span class="mc-ym">2027年12月</span><span class="mc-gz">壬子</span><span class="mc-jq">12月7日 大雪起</span></div>
+      <div class="mc-tags"><span class="tag red">财旺</span><span class="tag red">别熬垮</span><span class="tag-s">偏财 + 正财</span></div>
+      <div class="row"><span class="k">什么感觉</span><span class="v">钱的机会多、人也忙得脚不沾地。但你是身弱，担财容易累。</span></div>
+      <div class="row do"><span class="k">适合干</span><span class="v">收钱、收尾、算账、把一年的成果落袋。</span></div>
+      <div class="row no"><span class="k">别干</span><span class="v">别为了钱把自己熬垮——这个月最要注意休息。</span></div>
+      <div class="why">为什么：壬子全水＝财星大旺；但你日主戊土身弱，财旺耗身＝机会多、精力是瓶颈。</div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-2028">
+    <div class="ch-head"><span class="ch-no">卷四</span><div><div class="ch-title">2028年 · 戊申年</div><div class="ch-en">2028 · THE OUTPUT YEAR</div></div><div class="ch-line"></div></div>
+    <div class="verify">
+      <span class="vt">这一年是什么</span>
+      戊申年＝<b>驿马加文昌加食神</b>三样好牌一起来，而且天干地支都是「食神」。<b>这是你出作品、出门、换环境最顺的一年。</b>2026年闭关输入的东西，2028年会一口气吐出来。
+    </div>
+    
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年1月</span><span class="mc-gz">癸丑</span><span class="mc-jq">1月6日 小寒起</span><span class="tag-s">正财+劫财</span></div>
+      <div class="mc-tags"><span class="tag ">贵人月</span><span class="tag ">丑刑戌</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">见人谈事的好月，但别跟自己过不去。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年2月</span><span class="mc-gz">甲寅</span><span class="mc-jq">2月4日 立春起</span><span class="tag-s">七杀+七杀</span></div>
+      <div class="mc-tags"><span class="tag ">压力月</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">一年压力最大的一个月，稳住别贪新。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年3月</span><span class="mc-gz">乙卯</span><span class="mc-jq">3月5日 惊蛰起</span><span class="tag-s">正官+正官</span></div>
+      <div class="mc-tags"><span class="tag ">正事月</span><span class="tag ">桃花</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">正经路子最顺，人缘也好。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年4月</span><span class="mc-gz">丙辰</span><span class="mc-jq">4月4日 清明起</span><span class="tag-s">偏印+比肩</span></div>
+      <div class="mc-tags"><span class="tag ">变动月</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">辰冲戌，又要动——搬、换、调整。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年5月</span><span class="mc-gz">丁巳</span><span class="mc-jq">5月5日 立夏起</span><span class="tag-s">正印+偏印</span></div>
+      <div class="mc-tags"><span class="tag ">禄神</span><span class="tag ">学习月</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">得财得位，适合谈正事、读书。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年6月</span><span class="mc-gz">戊午</span><span class="mc-jq">6月5日 芒种起</span><span class="tag-s">比肩+正印</span></div>
+      <div class="mc-tags"><span class="tag ">火旺懒月</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">又到火旺月，想躺着，别硬拼。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年7月</span><span class="mc-gz">己未</span><span class="mc-jq">7月6日 小暑起</span><span class="tag-s">劫财+劫财</span></div>
+      <div class="mc-tags"><span class="tag gold">⭐贵人月</span><span class="tag ">西南月</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">去西南（云南）最顺的月份。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年8月</span><span class="mc-gz">庚申</span><span class="mc-jq">8月7日 立秋起</span><span class="tag-s">食神+食神</span></div>
+      <div class="mc-tags"><span class="tag gold">⭐⭐出门月</span><span class="tag ">驿马</span><span class="tag ">文昌</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">驿马加文昌全开：出门、出作品，最猛的一个月。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年9月</span><span class="mc-gz">辛酉</span><span class="mc-jq">9月7日 白露起</span><span class="tag-s">伤官+伤官</span></div>
+      <div class="mc-tags"><span class="tag gold">⭐⭐创作巅峰</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">全年内容产出最强的一个月，别浪费。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年10月</span><span class="mc-gz">壬戌</span><span class="mc-jq">10月8日 寒露起</span><span class="tag-s">偏财+比肩</span></div>
+      <div class="mc-tags"><span class="tag ">华盖月</span><span class="tag ">伏吟</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">想安静、想修行、适合闭关做东西。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年11月</span><span class="mc-gz">癸亥</span><span class="mc-jq">11月7日 立冬起</span><span class="tag-s">正财+偏财</span></div>
+      <div class="mc-tags"><span class="tag ">财月</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">进项多，也忙。</span></div>
+    </div>
+    <div class="mcard slim">
+      <div class="mc-head"><span class="mc-ym">2028年12月</span><span class="mc-gz">甲子</span><span class="mc-jq">12月6日 大雪起</span><span class="tag-s">七杀+正财</span></div>
+      <div class="mc-tags"><span class="tag ">压力+财</span></div>
+      <div class="row"><span class="k">一句话</span><span class="v">有压力也有钱，注意身体。</span></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-2931">
+    <div class="ch-head"><span class="ch-no">卷五</span><div><div class="ch-title">2029 — 2031 · 每月对照表</div><div class="ch-en">MONTH BY MONTH</div></div><div class="ch-line"></div></div>
+    <p class="lead">2029（己酉·伤官年）：内容创作的高峰年。2030（庚戌·华盖年）：灵性、医道、内容事业正式起盘。2031（辛亥）：45岁换丁酉大运，作品开始变现。</p>
+    <table class="mini">
+      <tr><th>月份</th><th>干支</th><th>十神</th><th>角色</th><th>节气起</th></tr>
+      <tr><td>2029年1月</td><td>乙丑</td><td>正官+劫财</td><td>贵人月</td><td>1月5日 小寒起</td></tr><tr><td>2029年2月</td><td>丙寅</td><td>偏印+七杀</td><td>压力月</td><td>2月3日 立春起</td></tr><tr><td>2029年3月</td><td>丁卯</td><td>正印+正官</td><td>人缘月</td><td>3月5日 惊蛰起</td></tr><tr><td>2029年4月</td><td>戊辰</td><td>比肩+比肩</td><td>变动月</td><td>4月4日 清明起</td></tr><tr><td>2029年5月</td><td>己巳</td><td>劫财+偏印</td><td>得位月</td><td>5月5日 立夏起</td></tr><tr><td>2029年6月</td><td>庚午</td><td>食神+正印</td><td>低谷月</td><td>6月5日 芒种起</td></tr><tr class="hl"><td>2029年7月</td><td>辛未</td><td>伤官+劫财</td><td>⭐黄金月</td><td>7月7日 小暑起</td></tr><tr><td>2029年8月</td><td>壬申</td><td>偏财+食神</td><td>出门月</td><td>8月7日 立秋起</td></tr><tr class="hl"><td>2029年9月</td><td>癸酉</td><td>正财+伤官</td><td>⭐发力月</td><td>9月7日 白露起</td></tr><tr><td>2029年10月</td><td>甲戌</td><td>七杀+比肩</td><td>华盖月</td><td>10月8日 寒露起</td></tr><tr><td>2029年11月</td><td>乙亥</td><td>正官+偏财</td><td>变现月</td><td>11月7日 立冬起</td></tr><tr><td>2029年12月</td><td>丙子</td><td>偏印+正财</td><td>收成月</td><td>12月7日 大雪起</td></tr><tr><td>2030年1月</td><td>丁丑</td><td>正印+劫财</td><td>贵人月</td><td>1月5日 小寒起</td></tr><tr><td>2030年2月</td><td>戊寅</td><td>比肩+七杀</td><td>压力月</td><td>2月4日 立春起</td></tr><tr><td>2030年3月</td><td>己卯</td><td>劫财+正官</td><td>人缘月</td><td>3月5日 惊蛰起</td></tr><tr><td>2030年4月</td><td>庚辰</td><td>食神+比肩</td><td>变动月</td><td>4月5日 清明起</td></tr><tr><td>2030年5月</td><td>辛巳</td><td>伤官+偏印</td><td>得位月</td><td>5月5日 立夏起</td></tr><tr><td>2030年6月</td><td>壬午</td><td>偏财+正印</td><td>低谷月</td><td>6月5日 芒种起</td></tr><tr class="hl"><td>2030年7月</td><td>癸未</td><td>正财+劫财</td><td>⭐黄金月</td><td>7月7日 小暑起</td></tr><tr><td>2030年8月</td><td>甲申</td><td>七杀+食神</td><td>出门月</td><td>8月7日 立秋起</td></tr><tr class="hl"><td>2030年9月</td><td>乙酉</td><td>正官+伤官</td><td>⭐发力月</td><td>9月7日 白露起</td></tr><tr><td>2030年10月</td><td>丙戌</td><td>偏印+比肩</td><td>华盖月</td><td>10月8日 寒露起</td></tr><tr><td>2030年11月</td><td>丁亥</td><td>正印+偏财</td><td>变现月</td><td>11月7日 立冬起</td></tr><tr><td>2030年12月</td><td>戊子</td><td>比肩+正财</td><td>收成月</td><td>12月7日 大雪起</td></tr><tr><td>2031年1月</td><td>己丑</td><td>劫财+劫财</td><td>贵人月</td><td>1月5日 小寒起</td></tr><tr><td>2031年2月</td><td>庚寅</td><td>食神+七杀</td><td>压力月</td><td>2月4日 立春起</td></tr><tr><td>2031年3月</td><td>辛卯</td><td>伤官+正官</td><td>人缘月</td><td>3月6日 惊蛰起</td></tr><tr><td>2031年4月</td><td>壬辰</td><td>偏财+比肩</td><td>变动月</td><td>4月5日 清明起</td></tr><tr><td>2031年5月</td><td>癸巳</td><td>正财+偏印</td><td>得位月</td><td>5月6日 立夏起</td></tr><tr><td>2031年6月</td><td>甲午</td><td>七杀+正印</td><td>低谷月</td><td>6月6日 芒种起</td></tr><tr class="hl"><td>2031年7月</td><td>乙未</td><td>正官+劫财</td><td>⭐黄金月</td><td>7月7日 小暑起</td></tr><tr><td>2031年8月</td><td>丙申</td><td>偏印+食神</td><td>出门月</td><td>8月8日 立秋起</td></tr><tr class="hl"><td>2031年9月</td><td>丁酉</td><td>正印+伤官</td><td>⭐发力月</td><td>9月8日 白露起</td></tr><tr><td>2031年10月</td><td>戊戌</td><td>比肩+比肩</td><td>华盖月</td><td>10月8日 寒露起</td></tr><tr><td>2031年11月</td><td>己亥</td><td>劫财+偏财</td><td>变现月</td><td>11月7日 立冬起</td></tr><tr><td>2031年12月</td><td>庚子</td><td>食神+正财</td><td>收成月</td><td>12月7日 大雪起</td></tr>
+    </table>
+    <div class="note">
+      <span class="nt">怎么用这张表</span>
+      规律和前面完全一样，<b>每年重复</b>：<br>
+      • <b>7月（未月）</b>：贵人月加西南月——每年7月都是找人、去西南最好的时候<br>
+      • <b>8月9月（申酉月）</b>：全年最能出活的两个月——重要产出安排在这里<br>
+      • <b>6月（午月）</b>：低谷月，别硬拼，读书修整<br>
+      • <b>11月（亥月）</b>：变现月，把作品换成钱<br>
+      • <b>4月（辰月）</b>：变动月，搬、换、调整
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-taboo">
+    <div class="ch-head"><span class="ch-no">卷六</span><div><div class="ch-title">记住这几条就够了</div><div class="ch-en">THE SHORT LIST</div></div><div class="ch-line"></div></div>
+    <ul class="sop">
+      <li><b>不想干活的时候，先看日历。</b>如果是6月前后（午月），那是火旺，不是你的错——读书、学东西，别自责。如果是8、9月还不想干，那才真该操心。</li>
+      <li><b>重要产出，一律安排在8月和9月。</b>这两个月你手最痒、脑子最好使，同样的活花时间最少、质量最高。</li>
+      <li><b>每年7月，安排去西南（云南）。</b>贵人月加西南月，去那里见人、考察、推进落地，一年里最顺。</li>
+      <li><b>每年11月，别动钱。</b>不投资、不合伙、不借钱给人、不买大件。这个月少动钱＝赚钱。</li>
+      <li><b>每年4月，该搬就搬、该换就换。</b>辰冲戌，变动月，顺水推舟比硬扛省力。</li>
+      <li><b>每年1月和7月，主动去见人。</b>天乙贵人当值，你找人、人找你，都容易成。</li>
+      <li><b>2027年7月，去云南这件事，别拖。</b>那是三盘同时指向的一个月——错过了就要等下一轮。</li>
+    </ul>
+    <div class="verify">
+      <span class="vt">最后一句实话</span>
+      命理不能替你干活，但能告诉你<b>什么时候干最省力</b>。<br>
+      你现在（2026下半年）的问题是：<b>你以为自己懒，其实你是在一个该吸收的年份里，硬逼自己产出。</b><br>
+      顺着来：今年读、今年学、今年养；<b>9月开始动手，明年7月去西南，2028年出作品。</b>你的节奏本来就在这条线上，只是你没看见。
+    </div>
+  </section>
+
+  <div class="footnote">
+    <p>排盘依据：公历 1987-02-18 卯时（内蒙古额尔古纳）· 八字 丁卯 壬寅 戊戌 乙卯 · 日主戊土（身弱，用神火土）</p>
+    <p>流月以节气换月：立春／惊蛰／清明／立夏／芒种／小暑／立秋／白露／寒露／立冬／大雪／小寒。表中日期为该月节气起始日，跨到次月节气前一天为止。</p>
+    <p>神煞基准（寅午戌局）：驿马＝申、华盖＝戌、将星与羊刃＝午、桃花＝卯；戊日天乙贵人＝丑与未；戊日禄神＝巳；戊日文昌＝申。</p>
+    <p>本表为命理推演记录，供自省参用，非宿命论断。</p>
+  </div>
+
+</div>
+<button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">回顶</button>
+<script>
+  document.querySelectorAll('.nav-item > .nav-link.has-sub').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(window.innerWidth <= 760){ e.preventDefault(); a.parentElement.classList.toggle('open'); }
+    });
+  });
+  document.querySelectorAll('.nav-sub a').forEach(function(a){
+    a.addEventListener('click', function(){
+      if(window.innerWidth <= 760){
+        document.querySelector('.nav-items').classList.remove('open');
+        document.querySelectorAll('.nav-item').forEach(function(it){ it.classList.remove('open'); });
+      }
+    });
+  });
+</script>
+</body>
+</html>
